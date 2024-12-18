@@ -1,0 +1,121 @@
+// .footer {
+//   display: flex;
+//   gap: 6.2rem;
+//   justify-content: space-around;
+//   // align-items: center;
+//   padding: 2rem 0;
+//   position: relative;
+//   color: var(--color-one);
+
+//   &::before {
+//     content: "";
+//     position: absolute;
+//     width: 200vw;
+//     height: 110%;
+//     background-color: var(--color-two);
+//     transform: translate(-25%, -15%);
+//     z-index: -1;
+//   }
+
+//   & li {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 1.2rem;
+//   }
+// }
+
+// h3 {
+//   font-weight: var(--font-weight-two);
+//   font-size: var(--font-size-five);
+//   line-height: var(--line-height-five);
+// }
+
+// .footer-h3 {
+//   font-size: var(--font-size-six);
+// }
+
+// .footer-link {
+//   display: block;
+//   font-size: var(--font-size-four);
+//   font-size: var(--font-size-there);
+//   line-height: var(--line-height-five);
+
+//   &__1 {
+//     font-size: var(--font-size-five);
+//     font-weight: 500;
+//     line-height: var(--line-height-seven);
+//   }
+// }
+
+// p {
+//   color: var(--color-one);
+//   font-weight: var(--font-weight-two);
+//   font-size: var(--font-size-two);
+//   line-height: var(--line-height-two);
+// }
+
+// .input-div {
+//   & input {
+//     padding: 1.2rem 3.2rem 1.2rem 1.2rem;
+//     background-color: transparent;
+//     border: 1px solid var(--color-one);
+//     position: relative;
+//     color: var(--color-one);
+//     font-size: var(--font-size-there);
+
+//     &::placeholder {
+//       font-size: var(--font-size-there);
+//       font-weight: var(--font-weight-one);
+//       line-height: var(--line-height-five);
+//     }
+//   }
+
+//   & svg {
+//     position: absolute;
+//     transform: translate(-150%, 65%);
+//   }
+// }
+
+// .social-media-icons {
+//   display: flex;
+//   gap: 3.6rem;
+//   margin-top: 1rem;
+//   justify-content: center;
+
+//   a {
+//     transform: scale(2);
+//     &:hover {
+//       transform: scale(2.5);
+//     }
+//   }
+// }
+
+// .download-div {
+//   display: flex;
+//   gap: 1.2rem;
+// }
+
+// .qr-code {
+//   width: 76px;
+//   height: 76px;
+// }
+
+// .download-div2 {
+//   display: flex;
+//   flex-direction: column;
+//   width: 104px;
+//   height: 100px;
+
+//   & img {
+//     width: 50%;
+//     height: 500px;
+
+//     &1 {
+//       height: 30px;
+//     }
+
+//     &2 {
+//       height: 34px;
+//     }
+//   }
+// }
