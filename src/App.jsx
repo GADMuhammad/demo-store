@@ -2,7 +2,7 @@ import Header from "./Components/Header";
 import { useState, useEffect, createContext } from "react";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
-import Home from "./Home";
+import Home from "./Components/Home";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Best from "./Components/Best";
 import ErrorElement from "./Components/ErrorElement";
