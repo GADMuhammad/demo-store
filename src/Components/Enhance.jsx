@@ -36,7 +36,7 @@ export default function Enhance({ timerDate }) {
           whileHover="hover"
           whileTap="tap"
         >
-          <Link>Buy Now!</Link>
+          <Link to="/all">Buy Now!</Link>
         </motion.div>
       </div>
       <div className="items-start justify-start">
