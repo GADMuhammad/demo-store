@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Loader from "./Loader";
 import TempProducts from "./TempProduct";
 import { HeadingContext } from "../App";
@@ -12,6 +12,10 @@ const Best = ({ all = true }) => {
         .slice(0, 5);
 
   const { redHeading, mainHeading } = useContext(HeadingContext);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="border-b-solid mb-16 mt-24 flex flex-col gap-8 border-b-2 border-b-three pb-16">
