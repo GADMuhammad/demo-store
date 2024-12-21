@@ -1,34 +1,29 @@
-import Best from "./Components/Best";
-import BrowseByCategory from "./Components/BrowseByCategory";
-import Enhance from "./Components/Enhance";
-import Explore from "./Components/Explore";
-import Features from "./Components/Features";
-import FlashSale from "./Components/FlashSale";
 import Header from "./Components/Header";
-import Footer from "./Components/Footer/Footer";
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
-import Introduction from "./Components/Introduction";
-import Arrival from "./Components/Arrival/";
+import Home from "./Home";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Best from "./Components/Best";
+import ErrorElement from "./Components/ErrorElement";
 
 const redHeading =
     "border-l-solid rounded border-l-[16px] border-l-five pl-6 text-3xl font-semibold leading-five text-five",
   mainHeading = "font-inter text-6xl font-semibold leading-nine";
 
+export const HeadingContext = createContext();
+
 function App() {
-  const [situation, setSituation] = useState("home");
-
   // TIMER Start
-  const [remainingSeconds, setRemainingSecond] = useState(3600);
-
-  const minutes = String(Math.floor(remainingSeconds / 60)).padStart(2, "0"),
+  const [remainingSeconds, setRemainingSecond] = useState(3600),
+    minutes = String(Math.floor(remainingSeconds / 60)).padStart(2, "0"),
     seconds = String(remainingSeconds % 60).padStart(2, "0");
 
   useEffect(() => {
-    const time = setInterval(() => {
-      setRemainingSecond((prev) => (prev !== 0 ? prev - 1 : 3600));
-    }, 1000);
+    const time = setInterval(
+      () => setRemainingSecond((prev) => (prev !== 0 ? prev - 1 : 3600)),
+      1000,
+    );
 
     return () => clearInterval(time);
   }, []);
@@ -140,35 +135,27 @@ function App() {
     initializeAllData();
   }, []);
 
-  let show = (
-    <>
-      <Introduction />
-      <FlashSale
-        redHeading={redHeading}
-        mainHeading={mainHeading}
-        timerDate={timerDate}
-      />
-      <BrowseByCategory redHeading={redHeading} mainHeading={mainHeading} />
-      <Best redHeading={redHeading} mainHeading={mainHeading} />
-      <Enhance timerDate={timerDate} />
-      <Explore redHeading={redHeading} mainHeading={mainHeading} />
-      <Arrival redHeading={redHeading} mainHeading={mainHeading} />
-      <Features />
-    </>
-  );
-
-  if (situation === "about") {
-    show = <About />;
-  } else if (situation === "contact") {
-    show = <Contact />;
-  }
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Header />,
+      children: [
+        {
+          index: true,
+          element: <Home timerDate={timerDate} />,
+        },
+        { path: "about", element: <About /> },
+        { path: "contact", element: <Contact /> },
+        { path: "all", element: <Best /> },
+        { path: "*", element: <ErrorElement /> },
+      ],
+    },
+  ]);
 
   return (
-    <>
-      <Header setSituation={setSituation} />
-      {show}
-      {/* <Footer /> */}
-    </>
+    <HeadingContext.Provider value={{ redHeading, mainHeading }}>
+      <RouterProvider router={router} />;
+    </HeadingContext.Provider>
   );
 }
 

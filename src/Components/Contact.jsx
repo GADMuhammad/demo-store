@@ -44,7 +44,7 @@ const Contact = () => {
   return (
     <>
       <div className="my-32 flex animate-up justify-between gap-10">
-        <div className="flex w-1/4 flex-col justify-center gap-8 p-10 shadow-contact">
+        <div className="flex flex-col justify-center gap-8 p-10 shadow-contact">
           {info.map(({ icon, label, note, link_href, link_label }, index) => {
             const paragraphAndLinkStyle = "text-2xl leading-four";
             return (

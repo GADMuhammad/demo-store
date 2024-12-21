@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const buttonLabel = "View all Products";
@@ -5,17 +6,17 @@ const buttonLabel = "View all Products";
 const Button = () => {
   return (
     <StyledWrapper>
-      <button alt={buttonLabel}>
+      <Link to="/all" alt={buttonLabel}>
         {buttonLabel.split("").map((char, index) => (
           <i key={`${char}${index}`}>{char === " " ? "\u00A0" : char}</i>
         ))}
-      </button>
+      </Link>
     </StyledWrapper>
   );
 };
 
 const StyledWrapper = styled.div`
-  button {
+  a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,14 +28,14 @@ const StyledWrapper = styled.div`
     text-transform: lowercase;
     border: 0;
     background-color: #db4444;
-    box-shadow: #b43a3a 0px 7px 0px 0px;
+    /* box-shadow: #b43a3a 0px 7px 0px 0px; */
     border-radius: 12px;
     overflow: hidden;
     transition: 31ms cubic-bezier(0.5, 0.7, 0.4, 1);
     margin: 8px auto;
   }
 
-  button:before {
+  a:before {
     content: attr(alt);
     display: flex;
     align-items: center;
@@ -48,19 +49,19 @@ const StyledWrapper = styled.div`
     opacity: 1;
   }
 
-  button:active {
+  a:active {
     box-shadow: none;
     transform: translateY(7px);
     transition: 35ms cubic-bezier(0.5, 0.7, 0.4, 1);
   }
 
-  button:hover:before {
+  a:hover:before {
     transition: all 0s;
     transform: translateY(100%);
     opacity: 0;
   }
 
-  button i {
+  a i {
     color: white;
     font-size: 15px;
     font-weight: bold;
@@ -71,7 +72,7 @@ const StyledWrapper = styled.div`
     opacity: 0;
   }
 
-  button:hover i {
+  a:hover i {
     transition: all 0.2s ease;
     transform: translateY(0px);
     opacity: 1;
@@ -79,7 +80,7 @@ const StyledWrapper = styled.div`
 
   ${[...Array(buttonLabel.length)].map(
     (_, index) => `
-    button:hover i:nth-child(${index + 1}) {
+    a:hover i:nth-child(${index + 1}) {
       transition-delay: calc(0.045s * ${index + 1});
     }
   `,

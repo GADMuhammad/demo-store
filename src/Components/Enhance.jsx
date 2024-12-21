@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export default function Enhance({ timerDate }) {
   return (
@@ -25,7 +26,7 @@ export default function Enhance({ timerDate }) {
           ))}
         </div>
 
-        <motion.button
+        <motion.div
           className="w-fit rounded-md bg-six px-14 py-6 text-2xl font-medium leading-five tracking-widest text-one"
           transition={{ type: "spring", stiffness: 700 }}
           variants={{
@@ -35,8 +36,8 @@ export default function Enhance({ timerDate }) {
           whileHover="hover"
           whileTap="tap"
         >
-          Buy Now!
-        </motion.button>
+          <Link>Buy Now!</Link>
+        </motion.div>
       </div>
       <div className="items-start justify-start">
         <img

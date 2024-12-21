@@ -3,26 +3,11 @@ import TempProduct from "./TempProduct";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Button from "./Button";
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import Loader from "./Loader";
+import { HeadingContext } from "../App";
 
-const ArrowButton = ({ direction, onClick }) => {
-  const isNext = direction === "next";
-  return (
-    <button
-      className={`absolute z-10 flex rounded-full bg-three p-4 transition-transform hover:scale-110 focus:outline-none ${
-        isNext ? "-top-28 right-4" : "right-28 top-[-4.5rem] -translate-y-1/2"
-      }`}
-      onClick={onClick}
-    >
-      <ion-icon
-        name={isNext ? "arrow-forward-outline" : "arrow-back-outline"}
-      />
-    </button>
-  );
-};
-
-const FlashSale = ({ redHeading, mainHeading, timerDate }) => {
+const FlashSale = ({ timerDate }) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -90,9 +75,10 @@ const FlashSale = ({ redHeading, mainHeading, timerDate }) => {
     }
   };
 
+  const { redHeading, mainHeading } = useContext(HeadingContext);
+
   return (
     <div className="border-b-solid relative mb-16 mt-24 flex flex-col gap-8 border-b-2 border-b-three pb-16">
-      {/* // <div className="relative mb-14 mt-20 flex flex-col gap-8 pb-16"> */}
       <h4 className={redHeading}>Today’s</h4>
       <div className="flex items-center justify-between gap-36">
         <h2 className={mainHeading}>Flash Sales</h2>

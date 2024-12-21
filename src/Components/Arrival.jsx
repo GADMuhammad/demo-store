@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { HeadingContext } from "../App";
+
 const FeaturesDetails = [
   {
     title: "PlayStation 5",
@@ -21,7 +24,9 @@ const FeaturesDetails = [
   },
 ];
 
-export default function Arrival({ redHeading, mainHeading }) {
+export default function Arrival() {
+  const { redHeading, mainHeading } = useContext(HeadingContext);
+
   return (
     <div className="flex flex-col gap-10">
       <h4 className={redHeading}>Featured</h4>

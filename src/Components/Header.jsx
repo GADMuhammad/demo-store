@@ -2,9 +2,15 @@ import { useReducer } from "react";
 import Search from "./Search";
 import PopUpList from "./PopUpList";
 import { AnimatePresence } from "framer-motion";
+import { Link, NavLink, Outlet } from "react-router-dom";
 
 const INITIAL_STATE = { loveList: false, cartList: false },
-  pages = ["Home", "Contact", "About", "Sign Up"];
+  pages = [
+    { title: "Home", path: "/" },
+    { title: "Contact" },
+    { title: "About" },
+    { title: "Sign Up", path: "signup" },
+  ];
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -26,7 +32,7 @@ const reducer = (state, action) => {
   }
 };
 
-const Header = ({ setSituation }) => {
+const Header = () => {
   const [{ loveList, cartList }, PopUpDispatch] = useReducer(
     reducer,
     INITIAL_STATE,
@@ -68,14 +74,16 @@ const Header = ({ setSituation }) => {
           Exclusive
         </h1>
         <ul className="flex gap-20">
-          {pages.map((page) => (
-            <li key={page}>
-              <a
-                className="border-b-solid border-b-2 border-b-transparent text-2xl leading-five hover:border-b-two"
-                onClick={() => setSituation(page.toLowerCase())}
+          {pages.map(({ title, path }) => (
+            <li key={title}>
+              <NavLink
+                className={({ isActive }) =>
+                  `border-b-solid border-b-2 border-b-transparent text-2xl leading-five ${isActive ? "border-b-two" : "hover:border-gray-400"}`
+                }
+                to={path || title.toLowerCase()}
               >
-                {page}
-              </a>
+                {title}
+              </NavLink>
             </li>
           ))}
         </ul>
@@ -96,6 +104,7 @@ const Header = ({ setSituation }) => {
           ))}
         </div>
       </div>
+      <Outlet />
     </>
   );
 };

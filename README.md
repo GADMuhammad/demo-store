@@ -1,24 +1,8 @@
-# Demo Store
+# React + Vite
 
-A simple demo e-commerce store built with React, showcasing basic features like product display, cart management, and checkout. This project aims to demonstrate how to structure a React-based e-commerce store and manage state with hooks.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Features
+Currently, two official plugins are available:
 
-- **Product Listing:** Display a list of products with details like name, price, and description.
-- **Cart Management:** Add and remove items from the shopping cart.
-- **Checkout:** Simulate a checkout process with a basic form for user details.
-- **Responsive Design:** Built with responsiveness in mind, providing a smooth experience across different devices.
-  
-## Technologies Used
-
-- **React**: A JavaScript library for building user interfaces.
-- **CSS (SASS)**: For styling the components.
-- **React Router**: For handling routing between different pages.
-- **React Context API**: For state management across the app (e.g., cart state).
-
-## Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/GADMuhammad/demo-store.git
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

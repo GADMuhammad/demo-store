@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { HeadingContext } from "../App";
+
 const CategoriesDetails = [
   {
     img: "tv-outline",
@@ -29,7 +32,9 @@ const CategoriesDetails = [
   },
 ];
 
-function BrowseByCategory({ redHeading, mainHeading }) {
+function BrowseByCategory() {
+  const { redHeading, mainHeading } = useContext(HeadingContext);
+
   return (
     <div className="flex flex-col gap-4">
       <h4 className={redHeading}>Categories</h4>
