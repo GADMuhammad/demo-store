@@ -48,5 +48,3 @@ export default function Enhance({ timerDate }) {
     </div>
   );
 }
-
-// relative bg-two drop-shadow-md before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:z-10 before:bg-opacity-60 before:content-['']
