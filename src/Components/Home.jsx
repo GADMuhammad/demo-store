@@ -4,7 +4,7 @@ import Enhance from "./Enhance";
 import Features from "./Features";
 import FlashSale from "./FlashSale";
 import Introduction from "./Introduction";
-import Arrival from "./Components/Arrival/";
+import Arrival from "./Arrival/";
 
 export default function Home({ timerDate }) {
   return (
