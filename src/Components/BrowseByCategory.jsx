@@ -20,7 +20,7 @@ const CategoriesDetails = [
   },
   {
     img: "sparkles-outline",
-    product: "Makeup",
+    product: "Beauty",
   },
   {
     img: "diamond-outline",
