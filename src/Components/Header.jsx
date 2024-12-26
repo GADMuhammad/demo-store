@@ -91,7 +91,7 @@ const Header = () => {
           {icons.map(({ icon, dispatchType, list }) => (
             <button
               key={dispatchType}
-              onFocus={() => PopUpDispatch({ type: dispatchType })}
+              onClick={() => PopUpDispatch({ type: dispatchType })}
               onBlur={() => PopUpDispatch({ type: "close" })}
             >
               <ion-icon name={icon} />
