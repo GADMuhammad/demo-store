@@ -20,7 +20,7 @@ const Best = ({ all = true }) => {
   return (
     <div className="border-b-solid mb-16 mt-24 flex flex-col gap-8 border-b-2 border-b-three pb-16">
       <h4 className={redHeading}>This Month</h4>
-      <h2 className={mainHeading}>Best Selling Products</h2>
+      <h2 className={mainHeading}>{all ? "All" : "Best Selling"} Products</h2>
 
       <div className="flex animate-up flex-wrap justify-center gap-16 pb-8 transition-transform">
         {products?.map((product) => (

@@ -2,7 +2,7 @@ import { useReducer } from "react";
 import Search from "./Search";
 import PopUpList from "./PopUpList";
 import { AnimatePresence } from "framer-motion";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 const INITIAL_STATE = { loveList: false, cartList: false },
   pages = [
