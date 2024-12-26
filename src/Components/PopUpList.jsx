@@ -1,7 +1,23 @@
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 const PARAGRAPH_STYLE = "text-2xl font-medium leading-five";
 
 export default function PopUpList({ list, PopUpDispatch }) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        PopUpDispatch({ type: "close" });
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [PopUpDispatch]);
+
   const target = () => {
     const allData = JSON.parse(localStorage.getItem("allData"));
 
@@ -76,7 +92,7 @@ export default function PopUpList({ list, PopUpDispatch }) {
       animate="visible"
       exit="hidden"
       onClick={(e) => e.stopPropagation()}
-      onBlur={() => PopUpDispatch({ type: "close" })}
+      ref={ref}
       className={`absolute right-0 z-10 flex cursor-default rounded-md ${target()?.length ? "h-[38rem] w-[28rem]" : "h-96 w-[25rem]"} flex-col overflow-scroll bg-three p-4 shadow-popUp`}
     >
       {target()?.length ? (
