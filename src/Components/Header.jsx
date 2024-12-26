@@ -59,10 +59,7 @@ const Header = () => {
 
   return (
     <>
-      <div
-        onClick={() => PopUpDispatch({ type: "close" })}
-        className="tex relative mx-auto flex h-12 items-center justify-center text-2xl text-one before:absolute before:-z-10 before:mx-auto before:h-full before:w-screen before:bg-two before:content-['']"
-      >
+      <div className="tex relative mx-auto flex h-12 items-center justify-center text-2xl text-one before:absolute before:-z-10 before:mx-auto before:h-full before:w-screen before:bg-two before:content-['']">
         <p className="flex gap-4 text-2xl">
           Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
           <a className="underline hover:no-underline">ShopNow</a>
@@ -94,7 +91,8 @@ const Header = () => {
           {icons.map(({ icon, dispatchType, list }) => (
             <button
               key={dispatchType}
-              onClick={() => PopUpDispatch({ type: dispatchType })}
+              onFocus={() => PopUpDispatch({ type: dispatchType })}
+              onBlur={() => PopUpDispatch({ type: "close" })}
             >
               <ion-icon name={icon} />
               <AnimatePresence>
