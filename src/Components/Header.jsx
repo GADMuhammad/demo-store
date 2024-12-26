@@ -92,11 +92,15 @@ const Header = () => {
             <button
               key={dispatchType}
               onClick={() => PopUpDispatch({ type: dispatchType })}
-              onBlur={() => PopUpDispatch({ type: "close" })}
             >
               <ion-icon name={icon} />
               <AnimatePresence>
-                {list && <PopUpList list={dispatchType} />}
+                {list && (
+                  <PopUpList
+                    list={dispatchType}
+                    PopUpDispatch={PopUpDispatch}
+                  />
+                )}
               </AnimatePresence>
             </button>
           ))}
