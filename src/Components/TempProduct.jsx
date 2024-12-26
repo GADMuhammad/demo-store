@@ -2,12 +2,12 @@ const MAX_TITLE_LENGTH = 60;
 
 function TempProduct({ props }) {
   // prettier-ignore
-  const { title, price, discountPercentage, discount, image, images, isLoved, minimumOrderQuantity, id, category, rating } = props
+  const { title, price, discountPercentage, image, images, isLoved,  id, rating } = props
 
   const index = id - 1,
     img = image || images[0],
-    rateNum = Math.round(+rating.rate || +rating),
-    discountNum = discountPercentage || discount;
+    rateNum = Math.round(+rating),
+    discountNum = discountPercentage;
 
   const filledStars = Array(rateNum).fill(<ion-icon name="star" />),
     emptyStars = Array(5 - rateNum).fill(<ion-icon name="star-outline" />);
@@ -66,14 +66,6 @@ function TempProduct({ props }) {
           ? title.slice(0, MAX_TITLE_LENGTH) + "..."
           : title}
       </a>
-      {/* <a className="w-96 text-2xl font-medium leading-five">{category}</a> */}
-      {/* <a className="w-96 text-2xl font-medium leading-five">{index + 1}</a> */}
-
-      {/* {minimumOrderQuantity && (
-        <p className="text-2xl font-medium leading-five">
-          Order Quantities: {minimumOrderQuantity}
-        </p>
-      )} */}
 
       <div className="flex items-center gap-2">
         <span className="text-3xl font-medium leading-five tracking-wide text-five">
