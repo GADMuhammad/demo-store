@@ -7,7 +7,7 @@ import Best from "./Components/Best";
 import ErrorElement from "./Components/ErrorElement";
 import Home from "./Components/Home";
 import Signup from "./Components/Signup";
-import loader from "./Components/Loading";
+import loader from "./Components/loader";
 
 const redHeading =
     "border-l-solid rounded border-l-[16px] border-l-five pl-6 text-3xl font-semibold leading-five text-five",
