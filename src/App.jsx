@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Best from "./Components/Best";
 import ErrorElement from "./Components/ErrorElement";
 import Home from "./Components/Home";
+import Signup from "./Components/Signup";
+import loader from "./Components/Loading";
 
 const redHeading =
     "border-l-solid rounded border-l-[16px] border-l-five pl-6 text-3xl font-semibold leading-five text-five",
@@ -48,77 +50,6 @@ function App() {
   ];
   // TIMER End
 
-  const chooseCategory = (product) => {
-    if (product.category === "fragrances") {
-      return "beauty";
-    } else if (product.category?.includes("clothing")) {
-      return "clothes";
-    } else if (product.model) {
-      return "electronics";
-    } else if (product.ingredients) {
-      return "drinks";
-    } else {
-      return product.category;
-    }
-  };
-
-  useEffect(() => {
-    const initializeAllData = async () => {
-      try {
-        if (!localStorage.getItem("allData")) {
-          // 1th API
-          const response1 = await fetch("https://dummyjson.com/products");
-          const dummyProducts = await response1.json();
-
-          // 2th API
-          const response2 = await fetch("https://fakestoreapi.com/products");
-          const fakeStoreProducts = await response2.json();
-
-          // 3th API
-          const response3 = await fetch("https://fakestoreapi.in/api/products");
-          const fakeStoreProducts3 = await response3.json();
-
-          // 4th API
-          const drinksResponse = await fetch(
-            "https://api.sampleapis.com/coffee/hot",
-          );
-          const drinksJSON = await drinksResponse.json();
-
-          const updatedData = [
-            ...dummyProducts.products,
-            ...fakeStoreProducts,
-            ...fakeStoreProducts3.products,
-            ...drinksJSON,
-          ];
-
-          const formatAllProducts = updatedData.map((product, index) => ({
-            ...product,
-            id: index + 1,
-            category: chooseCategory(product),
-            title:
-              !product.title.includes("Coffee") &&
-              !product.title.includes("Espresso") &&
-              product.ingredients
-                ? `${product.title} ${product.ingredients[0]}`
-                : product.title,
-            isLoved: false,
-            price: product.price ?? 12.5,
-            amountOfProductInCart: 0,
-            discountPercentage:
-              product.discountPercentage ?? product.discount ?? 7.1,
-            rating: product.rating?.rate ?? product.rating ?? 4.5,
-          }));
-
-          localStorage.setItem("allData", JSON.stringify(formatAllProducts));
-        }
-      } catch (error) {
-        console.error("Error initializing allData:", error);
-      }
-    };
-
-    initializeAllData();
-  }, []);
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -127,10 +58,12 @@ function App() {
         {
           index: true,
           element: <Home timerDate={timerDate} />,
+          loader,
         },
         { path: "about", element: <About /> },
         { path: "contact", element: <Contact /> },
-        { path: "all", element: <Best /> },
+        { path: "products", element: <Best /> },
+        { path: "signup", element: <Signup /> },
         { path: "*", element: <ErrorElement /> },
       ],
     },
@@ -138,7 +71,7 @@ function App() {
 
   return (
     <HeadingContext.Provider value={{ redHeading, mainHeading }}>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </HeadingContext.Provider>
   );
 }

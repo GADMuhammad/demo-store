@@ -1,16 +1,16 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledWrapper = styled.div`
-  button {
+  a {
     display: flex;
-    justify-content: center;
     align-items: center;
     border: none;
     background: none;
     cursor: pointer;
   }
 
-  button span {
+  a span {
     letter-spacing: 4px;
     font-size: 14px;
     padding-right: 15px;
@@ -19,22 +19,22 @@ const StyledWrapper = styled.div`
     transition: letter-spacing 0.3s ease-in-out;
   }
 
-  button span:hover,
-  button:has(svg:hover) span {
+  a span:hover,
+  a:has(svg:hover) span {
     letter-spacing: 5px;
   }
 
-  button svg {
+  a svg {
     transform: translateX(-8px);
     transition: transform 0.3s ease;
     fill: #fff;
   }
 
-  button:hover svg {
+  a:hover svg {
     transform: translateX(0);
   }
 
-  button:active svg {
+  a:active svg {
     transform: scale(0.9);
   }
 
@@ -56,7 +56,7 @@ const StyledWrapper = styled.div`
     transition: transform 0.25s ease-out;
   }
 
-  button:hover span:after {
+  a:hover span:after {
     transform: scaleX(1);
     transform-origin: bottom left;
   }
@@ -65,7 +65,7 @@ const StyledWrapper = styled.div`
 export default function Shop() {
   return (
     <StyledWrapper>
-      <button>
+      <Link to="/products">
         <span>Shop now</span>
         <svg
           id="arrow-horizontal"
@@ -81,7 +81,7 @@ export default function Shop() {
             transform="translate(30)"
           />
         </svg>
-      </button>
+      </Link>
     </StyledWrapper>
   );
 }

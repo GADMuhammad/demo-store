@@ -12,7 +12,7 @@ export default function Home({ timerDate }) {
       <Introduction />
       <FlashSale timerDate={timerDate} />
       <BrowseByCategory />
-      <Best all={false} />
+      <Best filter={false} />
       <Enhance timerDate={timerDate} />
       <Arrival />
       <Features />

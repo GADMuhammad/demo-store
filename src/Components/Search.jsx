@@ -8,7 +8,7 @@ const StyledWrapper = styled.div`
 
   .icon {
     position: absolute;
-    right: 10px;
+    right: 12px;
     top: calc(50% + 5px);
     transform: translateY(calc(-50% - 5px));
   }
@@ -16,12 +16,13 @@ const StyledWrapper = styled.div`
   .input {
     width: 100%;
     height: 40px;
-    padding: 10px;
+    padding: 10px 13px;
     transition: 0.2s linear;
     border: 2px solid black;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    border-radius: 50px;
   }
 
   .input:focus {

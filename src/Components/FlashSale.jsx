@@ -3,8 +3,8 @@ import TempProduct from "./TempProduct";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Button from "./Button";
-import { Fragment, useContext } from "react";
-import Loader from "./Loader";
+import { Fragment, memo, useContext } from "react";
+import Loading from "./Loading";
 import { HeadingContext } from "../App";
 
 const FlashSale = ({ timerDate }) => {
@@ -19,8 +19,6 @@ const FlashSale = ({ timerDate }) => {
     slidesToShow: 5,
     slidesToScroll: 3,
     initialSlide: 0,
-    // nextArrow: <ArrowButton direction="next" />,
-    // prevArrow: <ArrowButton direction="prev" />,
     responsive: [
       {
         breakpoint: 1350,
@@ -40,7 +38,15 @@ const FlashSale = ({ timerDate }) => {
       {
         breakpoint: 820,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2.5,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 700,
+        settings: {
+          slidesToShow: 2,
           slidesToScroll: 2,
           initialSlide: 2,
         },
@@ -60,25 +66,22 @@ const FlashSale = ({ timerDate }) => {
     if (loadData()) {
       return (
         <>
-          <Slider
-            {...settings}
-            className="max-w-screen max-h-[35rem] animate-up"
-          >
+          <Slider {...settings} className="max-w-screen max-h-[35rem]">
             {loadData().map((product) => (
-              <TempProduct key={product.id} props={product} />
+              <TempProduct key={product.title} props={product} />
             ))}
           </Slider>
         </>
       );
     } else {
-      return <Loader />;
+      return <Loading />;
     }
   };
 
   const { redHeading, mainHeading } = useContext(HeadingContext);
 
   return (
-    <div className="border-b-solid relative mb-16 mt-24 flex flex-col gap-8 border-b-2 border-b-three pb-16">
+    <div className="border-b-solid relative mb-16 mt-24 flex animate-up flex-col gap-8 border-b-2 border-b-three pb-16">
       <h4 className={redHeading}>Today’s</h4>
       <div className="flex items-center justify-between gap-36">
         <h2 className={mainHeading}>Flash Sales</h2>
@@ -108,4 +111,4 @@ const FlashSale = ({ timerDate }) => {
   );
 };
 
-export default FlashSale;
+export default memo(FlashSale);

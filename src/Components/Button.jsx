@@ -6,7 +6,7 @@ const buttonLabel = "View all Products";
 const Button = () => {
   return (
     <StyledWrapper>
-      <Link to="/all" alt={buttonLabel}>
+      <Link to="/products" alt={buttonLabel}>
         {buttonLabel.split("").map((char, index) => (
           <i key={`${char}${index}`}>{char === " " ? "\u00A0" : char}</i>
         ))}

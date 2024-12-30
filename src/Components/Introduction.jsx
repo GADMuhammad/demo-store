@@ -1,18 +1,19 @@
 import Shop from "./Shop";
 
 const categories = [
-  "Technology & Electronics",
+  "Technology",
+  "Electronics",
   "Furniture & Lifestyle",
   "Clothes & Fashion",
   "Groceries & Pets",
-  "Make Up & Fragrances",
+  "Make Up",
   "Jewelery",
   "Water & Drinks",
 ];
 
 const Introduction = () => {
   return (
-    <div className="mt-10 flex">
+    <div className="mt-10 flex animate-up">
       <ul className="relative flex flex-col gap-6 before:absolute before:h-full before:w-full before:-translate-y-10 before:translate-x-80 before:border-l-2 before:border-solid before:border-l-black before:content-['']">
         {categories.map((category) => (
           <li key={category}>
@@ -23,7 +24,7 @@ const Introduction = () => {
         ))}
       </ul>
 
-      <div className="mx-auto flex h-[344px] w-[892px] text-one">
+      <div className="mx-auto flex h-[344px] w-[892px] items-center justify-center text-one">
         <div className="flex h-full w-1/2 flex-col justify-center gap-10 bg-two p-20">
           <div className="flex items-center gap-8">
             <ion-icon name="logo-apple" />

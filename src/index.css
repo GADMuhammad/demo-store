@@ -19,7 +19,7 @@
   --font-size-eleven: 11rem;
 
   --color-one: #fafafa;
-  --color-two: #000;
+  --color-two: #323232;
   --color-three: #f5f5f5;
   --color-four: #ffad33;
   --color-five: #db4444;
@@ -28,6 +28,11 @@
   --color-eight: #eeff61;
   --color-nine: #ddd;
   --color-white: #fff;
+
+  --font-color-sub: #666;
+  --bg-color: #fff;
+  --bg-color-alt: #666;
+  --main-color: #323232;
 
   /* --line-height-one: 1.2rem;
   --line-height-two: 1.8rem;
@@ -200,7 +205,7 @@ ion-icon[name="shield-checkmark-outline"] {
   width: 7.5px;
 }
 ::-webkit-scrollbar-track {
-  background-color: transparent;
+  background-color: var(--color-one);
 }
 ::-webkit-scrollbar-thumb {
   background-color: #000;

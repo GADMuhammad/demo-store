@@ -38,7 +38,7 @@ function About() {
         </main>
         <img
           src="/muhammad gad.jpg"
-          className="h-1/3 w-1/4 rounded-xl shadow-image"
+          className="h-1/3 w-1/4 rounded-xl shadow-image max-lg:hidden"
           alt="image of mine - Muhammad Gad"
         />
       </div>

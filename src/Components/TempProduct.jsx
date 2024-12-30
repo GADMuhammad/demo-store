@@ -6,8 +6,7 @@ function TempProduct({ props }) {
 
   const index = id - 1,
     img = image || images[0],
-    rateNum = Math.round(+rating),
-    discountNum = discountPercentage;
+    rateNum = Math.round(+rating);
 
   const filledStars = Array(rateNum).fill(<ion-icon name="star" />),
     emptyStars = Array(5 - rateNum).fill(<ion-icon name="star-outline" />);
@@ -72,7 +71,7 @@ function TempProduct({ props }) {
           ${parseFloat(price).toFixed(2)}
         </span>
         <span className="text-2xl text-nine line-through">
-          ${Math.ceil(price * discountNum).toFixed(2)}
+          ${Math.ceil(price * discountPercentage).toFixed(2)}
         </span>
       </div>
 
