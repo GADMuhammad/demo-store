@@ -11,7 +11,7 @@ const FlashSale = ({ timerDate }) => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 1000,
+    speed: 2000,
     autoplay: true,
     cssEase: "linear",
     autoplaySpeed: 2000,
@@ -29,17 +29,23 @@ const FlashSale = ({ timerDate }) => {
         },
       },
       {
-        breakpoint: 1064,
+        breakpoint: 1120,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 3.7,
           slidesToScroll: 2,
         },
       },
       {
-        breakpoint: 820,
+        breakpoint: 1064,
         settings: {
-          slidesToShow: 2.5,
+          slidesToShow: 2.8,
           slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 830,
+        settings: {
+          slidesToShow: 2.7,
           initialSlide: 2,
         },
       },
@@ -47,15 +53,19 @@ const FlashSale = ({ timerDate }) => {
         breakpoint: 700,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 580,
+        settings: {
+          slidesToShow: 1.75,
+          slidesToScroll: 1,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
+          slidesToShow: 1.2,
         },
       },
     ],
@@ -81,7 +91,7 @@ const FlashSale = ({ timerDate }) => {
   const { redHeading, mainHeading } = useContext(HeadingContext);
 
   return (
-    <div className="border-b-solid relative mb-16 mt-24 flex animate-up flex-col gap-8 border-b-2 border-b-three pb-16">
+    <div className="border-b-solid max-semi-sm:mt-40 relative mb-16 mt-24 flex animate-up flex-col gap-8 border-b-2 border-b-three pb-16">
       <h4 className={redHeading}>Today’s</h4>
       <div className="flex items-center justify-between gap-36">
         <h2 className={mainHeading}>Flash Sales</h2>

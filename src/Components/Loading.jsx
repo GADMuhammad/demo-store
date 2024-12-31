@@ -35,10 +35,10 @@ const StyledWrapper = styled.div`
     border-top: 5px solid #db4444;
     border-right: 5px solid #db4444;
     border-radius: 50%;
-    animation: animateC 2s linear infinite;
+    animation: animate 2s linear infinite;
   }
 
-  @keyframes animateC {
+  @keyframes animate {
     0% {
       transform: rotate(0deg);
     }

@@ -70,7 +70,6 @@ const Header = () => {
           </p>
         </div>
 
-        {/* <div className="relative flex items-center justify-between py-6 before:absolute before:left-1/2 before:top-0 before:-z-10 before:h-full before:w-screen before:-translate-x-1/2 before:transform before:border-b-2 before:border-solid before:border-two before:bg-one before:content-['']"> */}
         <div
           className={`${styles.header} relative flex items-center justify-between py-6 before:absolute before:left-1/2 before:top-0 before:-z-10 before:h-full before:w-screen before:-translate-x-1/2 before:transform before:border-b-2 before:border-solid before:border-two before:bg-one before:content-['']`}
         >
