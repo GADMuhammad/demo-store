@@ -21,25 +21,15 @@ export default {
         women: "url('/Womens Collections.jpg')",
         speaker: "url('/speakers.png')",
         perfume: "url('/perfume.png')",
+        fingerPrint: "url('/public/protruding-squares.svg')",
       },
       scale: {
         200: "2",
       },
 
-      // fontSize: {
-      //   // HTML: "62.5%",
-      //   one: "1.1rem",
-      //   two: "1.2rem",
-      //   there: "1.4rem",
-      //   four: "1.6rem",
-      //   five: "2rem",
-      //   six: "2.4rem",
-      //   seven: "3.2rem",
-      //   eight: "3.6rem",
-      //   nine: "4.8rem",
-      //   ten: "5.4rem",
-      //   eleven: "11rem",
-      // },
+      screens: {
+        "semi-sm": "704px",
+      },
 
       colors: {
         one: "#fafafa",
@@ -68,18 +58,29 @@ export default {
         "slide-in": {
           from: {
             opacity: 0,
-            transform: "scale(0.5) rotate(90deg) translateY(-5rem)",
+            transform: "scale(0.5) rotate(90deg) translateY(-100rem)",
           },
           to: {
             opacity: 1,
             transform: "scale(1) rotate(0) translateY(0)",
           },
         },
+        "fade-in": {
+          from: {
+            opacity: 0,
+            transform: "scale(1.4) ",
+          },
+          to: {
+            opacity: 1,
+            transform: "scale(1) ",
+          },
+        },
       },
 
       animation: {
         up: "slide-up-fade-in 0.5s forwards ease-in-out",
-        in: "slide-in 0.5s forwards ease-in-out",
+        in: "slide-in 0.5s  forwards ease-in-out",
+        fade: "fade-in 0.5s  forwards ease-in-out",
       },
 
       lineHeight: {
