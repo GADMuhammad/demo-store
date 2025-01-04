@@ -2,7 +2,7 @@
 An e-commerce demo project built with React.js and styled using Tailwind CSS. This project showcases how to build a functional store interface, including features like product listings, a shopping cart, and user authentication. It's designed to help developers learn how to integrate front-end technologies like React and Tailwind CSS while simulating a real-world e-commerce store experience.
 
 
-![store](publis/store.jpeg)
+![store](publis/store.png)
 
 ## Features
 
