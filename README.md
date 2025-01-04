@@ -28,4 +28,4 @@ An e-commerce demo project built with React.js and styled using Tailwind CSS. Th
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/GADMuhammad/CalorieTracker.git
+   git clone https://github.com/GADMuhammad/demo-store.git
