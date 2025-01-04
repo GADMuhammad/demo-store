@@ -5,7 +5,6 @@ An e-commerce demo project built with React.js and styled using Tailwind CSS. Th
 ![store](public/store.png)
 
 ## Features
-
 - **Contains products in several categories:** Electronic - Mobile Phones - Beauty and Mack up - Furniture - Clothes - Jewellery - Drinks.
 - **Page for your preferred products:** You can have a favourite list to catch up later.
 - **Cart page:** You can add the products you will buy to the cart.
@@ -21,7 +20,6 @@ An e-commerce demo project built with React.js and styled using Tailwind CSS. Th
 
 
 ## Technologies Used
-
 - **React** for building the user interface.
 - **CSS/SASS/TailwindCSS** for styling the app.
 - **localStorage** to store user data.
