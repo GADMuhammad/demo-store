@@ -28,7 +28,10 @@ export default {
       },
 
       screens: {
+        medium_lg: "1200px",
         "semi-sm": "704px",
+        sm: "620px",
+        mobile: "550px",
       },
 
       colors: {
@@ -75,12 +78,21 @@ export default {
             transform: "scale(1) ",
           },
         },
+        opacity: {
+          from: {
+            opacity: 0,
+          },
+          to: {
+            opacity: 1,
+          },
+        },
       },
 
       animation: {
         up: "slide-up-fade-in 0.5s forwards ease-in-out",
         in: "slide-in 0.5s  forwards ease-in-out",
         fade: "fade-in 0.5s  forwards ease-in-out",
+        opacity: "opacity 0.5s  forwards ease-in-out",
       },
 
       lineHeight: {
