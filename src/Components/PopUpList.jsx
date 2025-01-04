@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 const PARAGRAPH_STYLE = "text-2xl font-medium leading-five";
 
 export default function PopUpList({ list, PopUpDispatch }) {
@@ -22,7 +23,7 @@ export default function PopUpList({ list, PopUpDispatch }) {
     const allData = JSON.parse(localStorage.getItem("allData"));
 
     switch (list) {
-      case "loveList":
+      case "preferredList":
         return allData?.filter((product) => product.isLoved);
       case "cartList":
         return allData?.filter((product) => product.amountOfProductInCart);
@@ -74,13 +75,17 @@ export default function PopUpList({ list, PopUpDispatch }) {
   };
 
   const buttons = [
-    { icon: "cart-outline", sort: "loveList" },
-    { icon: "heart-dislike-outline", sort: "loveList" },
+    { icon: "cart-outline", sort: "preferredList" },
+    { icon: "heart-dislike-outline", sort: "preferredList" },
     { icon: "add-outline", sort: "cartList" },
     { icon: "remove-outline", sort: "cartList" },
     { icon: "close-outline", sort: "cartList" },
   ];
 
+  const openHandle = () => {
+    PopUpDispatch({ type: "close" });
+    window.scrollTo(0, 0);
+  };
   return (
     <motion.div
       variants={{
@@ -95,6 +100,15 @@ export default function PopUpList({ list, PopUpDispatch }) {
       ref={ref}
       className={`absolute right-0 z-10 flex cursor-default rounded-md ${target()?.length ? "h-[38rem] w-[28rem]" : "h-96 w-[25rem]"} flex-col overflow-scroll bg-three p-4 shadow-popUp`}
     >
+      <Link
+        to={`/products/${list === "cartList" ? "cart" : "preferred"}`}
+        onClick={openHandle}
+        className="w-fit self-center rounded-md bg-five p-5 text-2xl font-medium leading-five tracking-widest text-one transition-transform hover:scale-105 active:scale-90"
+      >
+        Open the Page of {list === "cartList" ? "cart" : "preferred"} products
+        list
+      </Link>
+
       {target()?.length ? (
         target()?.map(
           (

@@ -1,11 +1,11 @@
-import { useReducer } from "react";
+import { useReducer, useRef } from "react";
 import Search from "./Search";
 import PopUpList from "./PopUpList";
 import { AnimatePresence } from "framer-motion";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import styles from "./Header.module.scss";
 
-const INITIAL_STATE = { loveList: false, cartList: false },
+const INITIAL_STATE = { preferredList: false, cartList: false },
   pages = [
     { title: "Home", path: "/" },
     { title: "Contact" },
@@ -15,15 +15,15 @@ const INITIAL_STATE = { loveList: false, cartList: false },
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "loveList":
-      return state.loveList
+    case "preferredList":
+      return state.preferredList
         ? INITIAL_STATE
-        : { loveList: true, cartList: false };
+        : { preferredList: true, cartList: false };
 
     case "cartList":
       return state.cartList
         ? INITIAL_STATE
-        : { loveList: false, cartList: true };
+        : { preferredList: false, cartList: true };
 
     case "close":
       return INITIAL_STATE;
@@ -34,16 +34,16 @@ const reducer = (state, action) => {
 };
 
 const Header = () => {
-  const [{ loveList, cartList }, PopUpDispatch] = useReducer(
+  const [{ preferredList, cartList }, PopUpDispatch] = useReducer(
     reducer,
     INITIAL_STATE,
   );
 
   const icons = [
     {
-      icon: loveList ? "heart" : "heart-outline",
-      dispatchType: "loveList",
-      list: loveList,
+      icon: preferredList ? "heart" : "heart-outline",
+      dispatchType: "preferredList",
+      list: preferredList,
     },
     {
       icon: cartList ? "cart" : "cart-outline",
@@ -57,6 +57,12 @@ const Header = () => {
     // list: loveList,
     // },
   ];
+
+  const menuRef = useRef(null);
+
+  const closeMenu = () => {
+    if (menuRef.current.checked) menuRef.current.checked = false;
+  };
 
   return (
     <>
@@ -77,7 +83,7 @@ const Header = () => {
             Exclusive
           </h1>
 
-          <input type="checkbox" id="menu" />
+          <input ref={menuRef} type="checkbox" id="menu" />
           <label htmlFor="menu">
             <div></div>
             <div></div>
@@ -88,6 +94,7 @@ const Header = () => {
             {pages.map(({ title, path }) => (
               <li key={title}>
                 <NavLink
+                  onClick={closeMenu}
                   className={({ isActive }) =>
                     `border-b-solid border-b-2 border-b-transparent text-2xl leading-five ${isActive ? "border-b-two" : "hover:border-gray-400"}`
                   }

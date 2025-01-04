@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import SocialMediaLinks from "./SocialMediaLinks";
 import { motion } from "framer-motion";
 
@@ -43,9 +44,13 @@ const info = [
 const paragraphAndLinkStyle = "text-2xl leading-four ";
 
 const Contact = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
-      <div className="animate-fade my-32 flex justify-between gap-10 max-lg:flex-col">
+      <div className="my-32 flex animate-fade justify-between gap-10 max-lg:flex-col">
         <div className="flex flex-col justify-center gap-8 p-10 shadow-contact max-lg:order-1 max-lg:flex-row max-lg:justify-around max-md:flex-col">
           {info.map(({ icon, label, note, link_href, link_label }, index) => {
             return (

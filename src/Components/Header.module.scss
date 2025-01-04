@@ -2,6 +2,7 @@
   @media (max-width: 950px) {
     position: relative;
     & label {
+      transition: transform 0.3s ease-in-out;
       display: flex;
       flex-direction: column;
       cursor: pointer;
@@ -47,16 +48,20 @@
     display: none;
 
     @media (max-width: 950px) {
-      &:checked + label > div {
-        &:nth-child(1) {
-          transform: translateY(10px) rotate(40deg);
-        }
-        &:nth-child(2) {
-          visibility: hidden;
-          opacity: 0;
-        }
-        &:nth-child(3) {
-          transform: translateY(-10px) rotate(-40deg);
+      &:checked + label {
+        transform: rotate(180deg);
+
+        & > div {
+          &:nth-child(1) {
+            transform: translateY(10px) rotate(40deg);
+          }
+          &:nth-child(2) {
+            visibility: hidden;
+            opacity: 0;
+          }
+          &:nth-child(3) {
+            transform: translateY(-10px) rotate(-40deg);
+          }
         }
       }
 

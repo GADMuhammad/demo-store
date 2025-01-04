@@ -3,7 +3,7 @@ import { useState, useEffect, createContext } from "react";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Best from "./Components/Best";
+import Products from "./Components/Products";
 import ErrorElement from "./Components/ErrorElement";
 import Home from "./Components/Home";
 import Signup from "./Components/Signup";
@@ -60,10 +60,15 @@ function App() {
           element: <Home timerDate={timerDate} />,
           loader,
         },
-        { path: "about", element: <About /> },
-        { path: "contact", element: <Contact /> },
-        { path: "products", element: <Best /> },
-        { path: "signup", element: <Signup /> },
+        { path: "/about", element: <About /> },
+        { path: "/contact", element: <Contact /> },
+        { path: "/products", element: <Products />, loader },
+        {
+          path: "/products/:filter",
+          element: <Products filter="cart" />,
+          loader,
+        },
+        { path: "/signup", element: <Signup /> },
         { path: "*", element: <ErrorElement /> },
       ],
     },

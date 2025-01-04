@@ -154,6 +154,7 @@ ion-icon[name="arrow-back-outline"],
 ion-icon[name="call-outline"],
 ion-icon[name="mail-outline"],
 ion-icon[name="heart-dislike-outline"],
+ion-icon[name="remove-circle-outline"],
 ion-icon[name="add-outline"],
 ion-icon[name="remove-outline"],
 ion-icon[name="close-outline"],
@@ -205,7 +206,7 @@ ion-icon[name="shield-checkmark-outline"] {
   width: 7.5px;
 }
 ::-webkit-scrollbar-track {
-  background-color: var(--color-one);
+  background-color: var(--color-nine);
 }
 ::-webkit-scrollbar-thumb {
   background-color: #000;

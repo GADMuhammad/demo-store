@@ -11,8 +11,9 @@ function TempProduct({ props }) {
   const filledStars = Array(rateNum).fill(<ion-icon name="star" />),
     emptyStars = Array(5 - rateNum).fill(<ion-icon name="star-outline" />);
 
+  const loadData = JSON.parse(localStorage.getItem("allData"));
+
   const buttonHandle = (action) => {
-    const loadData = JSON.parse(localStorage.getItem("allData"));
     const updatedData = [...loadData];
     const theClickedProduct = loadData[index];
 
@@ -24,10 +25,17 @@ function TempProduct({ props }) {
         };
         break;
 
-      case "cart":
+      case "cartPlus":
         updatedData[index] = {
           ...theClickedProduct,
           amountOfProductInCart: ++theClickedProduct.amountOfProductInCart,
+        };
+        break;
+
+      case "cartMinus":
+        updatedData[index] = {
+          ...theClickedProduct,
+          amountOfProductInCart: --theClickedProduct.amountOfProductInCart,
         };
         break;
     }
@@ -38,7 +46,7 @@ function TempProduct({ props }) {
   if (img === "string") return;
 
   return (
-    <div className="flex flex-col gap-1" key={title}>
+    <div className="animate-opacity flex flex-col gap-1" key={title}>
       <div className="group relative flex h-96 w-96 cursor-pointer justify-center rounded-lg bg-three">
         <img
           className="relative h-1/2 w-1/2 scale-150 self-center rounded-lg transition-transform group-hover:scale-200"
@@ -46,7 +54,7 @@ function TempProduct({ props }) {
         />
 
         <button
-          onClick={() => buttonHandle("cart")}
+          onClick={() => buttonHandle("cartPlus")}
           className="absolute flex h-16 w-full translate-y-80 items-center justify-center rounded-ee-lg rounded-es-lg bg-nine text-center text-2xl tracking-widest text-one opacity-0 transition-transform hover:bg-two group-hover:opacity-100"
         >
           Add To Cart
@@ -58,6 +66,17 @@ function TempProduct({ props }) {
         >
           <ion-icon name={isLoved ? "heart" : "heart-outline"} />
         </button>
+
+        {loadData[index].amountOfProductInCart ? (
+          <button
+            onClick={() => buttonHandle("cartMinus")}
+            className="absolute right-5 top-20 flex rounded-full bg-one p-1 transition-transform hover:scale-110 hover:animate-spin"
+          >
+            <ion-icon name="remove-circle-outline" />
+          </button>
+        ) : (
+          ""
+        )}
       </div>
 
       <a className="w-96 text-2xl font-medium leading-five">
@@ -74,6 +93,15 @@ function TempProduct({ props }) {
           ${Math.ceil(price * discountPercentage).toFixed(2)}
         </span>
       </div>
+
+      {loadData[index].amountOfProductInCart ? (
+        <p className="animate-fade text-2xl font-medium leading-five">
+          Items in cart: {loadData[index].amountOfProductInCart} item
+          {loadData[index].amountOfProductInCart > 1 ? "s" : ""}
+        </p>
+      ) : (
+        ""
+      )}
 
       <div className="flex gap-2">
         {filledStars}

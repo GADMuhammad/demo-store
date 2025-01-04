@@ -1,4 +1,4 @@
-import Best from "./Best";
+import Products from "./Products";
 import BrowseByCategory from "./BrowseByCategory";
 import Enhance from "./Enhance";
 import Features from "./Features";
@@ -12,7 +12,7 @@ export default function Home({ timerDate }) {
       <Introduction />
       <FlashSale timerDate={timerDate} />
       <BrowseByCategory />
-      <Best filter={false} />
+      <Products propFilter="best" />
       <Enhance timerDate={timerDate} />
       <Arrival />
       <Features />

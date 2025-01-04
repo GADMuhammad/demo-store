@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledWrapper = styled.div`
@@ -48,10 +50,20 @@ const StyledWrapper = styled.div`
 `;
 
 export default function Search() {
+  const navigate = useNavigate();
+  const inputRef = useRef(null);
+
+  const handleNavigation = () => {
+    navigate(`/products/${inputRef.current.value}`);
+  };
+
   return (
     <StyledWrapper>
       <div className="input-container">
         <input
+          ref={inputRef}
+          onChange={handleNavigation}
+          onClick={handleNavigation}
           type="text"
           name="text"
           className="input"

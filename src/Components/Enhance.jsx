@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 
 export default function Enhance({ timerDate }) {
   return (
-    <div className="m-20 flex justify-between gap-10 rounded-md bg-two px-10">
-      <div className="flex flex-col justify-center gap-12 px-20">
+    <div className="max-mobile:mx-0 mx-32 my-20 flex items-center gap-10 rounded-md bg-two p-10 max-xl:flex-col max-xl:gap-0 max-xl:pb-20">
+      <div className="flex flex-col justify-center gap-12 px-20 max-xl:order-1 max-xl:items-center">
         <span className="text-2xl font-semibold leading-three tracking-wider text-six">
           Categories
         </span>
-        <h1 className="font-inter text-7xl font-semibold leading-ten text-one">
-          Enhance Your <br /> Audio Experience
+        <h1 className="font-inter text-7xl font-semibold leading-ten text-one max-sm:text-5xl max-sm:leading-relaxed">
+          Enhance Your Audio Experience
         </h1>
 
-        <div className="flex items-center gap-10">
+        <div className="flex items-center gap-10 max-sm:flex-col-reverse">
           {timerDate.map(({ label, value }) => (
             <div
               key={label}
@@ -36,12 +36,12 @@ export default function Enhance({ timerDate }) {
           whileHover="hover"
           whileTap="tap"
         >
-          <Link to="/products ">Buy Now!</Link>
+          <Link to="/products">Buy Now!</Link>
         </motion.div>
       </div>
-      <div className="items-start justify-start">
+      <div className="max-mobile:hidden items-start justify-start">
         <img
-          className="max-h-[600px] max-w-[600px] self-start"
+          className="max-w-[600px] self-start max-xl:max-w-[400px]"
           src="/headphones.png"
         />
       </div>

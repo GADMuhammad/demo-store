@@ -6,6 +6,7 @@ import Button from "./Button";
 import { Fragment, memo, useContext } from "react";
 import Loading from "./Loading";
 import { HeadingContext } from "../App";
+import loader from "./loader";
 
 const FlashSale = ({ timerDate }) => {
   const settings = {
@@ -50,34 +51,46 @@ const FlashSale = ({ timerDate }) => {
         },
       },
       {
-        breakpoint: 700,
+        breakpoint: 750,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 2.2,
         },
       },
       {
-        breakpoint: 580,
+        breakpoint: 630,
         settings: {
-          slidesToShow: 1.75,
+          slidesToShow: 1.9,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 560,
+        settings: {
+          slidesToShow: 1.35,
+        },
+      },
+      {
+        breakpoint: 420,
         settings: {
           slidesToShow: 1.2,
+        },
+      },
+      {
+        breakpoint: 400,
+        settings: {
+          slidesToShow: 1.05,
         },
       },
     ],
   };
 
   const slider = () => {
-    const loadData = () => JSON.parse(localStorage?.getItem("allData"));
-    if (loadData()) {
+    const loadData = JSON.parse(localStorage?.getItem("allData")) || [];
+    if (loadData) {
       return (
         <>
           <Slider {...settings} className="max-w-screen max-h-[35rem]">
-            {loadData().map((product) => (
+            {loadData.map((product) => (
               <TempProduct key={product.title} props={product} />
             ))}
           </Slider>
@@ -91,9 +104,9 @@ const FlashSale = ({ timerDate }) => {
   const { redHeading, mainHeading } = useContext(HeadingContext);
 
   return (
-    <div className="border-b-solid max-semi-sm:mt-40 relative mb-16 mt-24 flex animate-up flex-col gap-8 border-b-2 border-b-three pb-16">
+    <div className="border-b-solid relative mb-16 mt-24 flex animate-up flex-col gap-8 border-b-2 border-b-three pb-16 max-semi-sm:mt-40">
       <h4 className={redHeading}>Today’s</h4>
-      <div className="flex items-center justify-between gap-36">
+      <div className="flex flex-wrap items-center justify-between gap-12 max-lg:justify-center">
         <h2 className={mainHeading}>Flash Sales</h2>
 
         <div className="flex items-center justify-between space-x-4 rounded-lg bg-white p-6">
