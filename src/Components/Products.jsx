@@ -33,6 +33,7 @@ export default function Products({ propFilter }) {
   };
 
   const { redHeading, mainHeading } = useContext(HeadingContext);
+  const productsNumber = products()?.length;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -58,7 +59,7 @@ export default function Products({ propFilter }) {
         {products()?.map((product) => (
           <TempProducts props={product} key={product.id} />
         )) ?? <Loading />}
-        {!products().length ? (
+        {!productsNumber ? (
           <p className="mx-auto animate-fade text-2xl font-medium leading-five">
             You have no products in this list.
           </p>
@@ -67,16 +68,16 @@ export default function Products({ propFilter }) {
         )}
       </div>
 
-      {filter === "cart" || filter === "preferred" ? (
+      {productsNumber && (filter === "cart" || filter === "preferred") ? (
         <p className="mx-auto animate-fade text-2xl font-medium leading-five">
-          You have {products().length} {filter} product
-          {products().length > 1 ? "s" : ""}.
+          You have {productsNumber} {filter} product
+          {productsNumber > 1 ? "s" : ""}.
         </p>
       ) : (
         ""
       )}
 
-      {filter === "cart" ? (
+      {productsNumber && filter === "cart" ? (
         <p className="mx-auto animate-fade text-2xl font-medium leading-five">
           The total price of items in cart is:{" "}
           {products()
