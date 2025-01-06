@@ -6,29 +6,31 @@ import { useParams } from "react-router-dom";
 
 export default function Products({ propFilter }) {
   const allData = JSON.parse(localStorage.getItem("allData")) || [];
-  const filter = useParams().filter;
+  const filter = useParams().filter || propFilter;
 
   const products = () => {
-    if (propFilter === "best") {
-      return allData
-        ?.sort((a, b) => b.minimumOrderQuantity - a.minimumOrderQuantity)
-        .slice(0, 5);
-    } else if (filter === "preferred") {
-      return allData?.filter((product) => product.isLoved);
-    } else if (filter === "cart") {
-      return allData?.filter((product) => product.amountOfProductInCart);
-    } else if (filter) {
-      const category = allData?.filter(
-        (product) => product.category.toLowerCase() === filter.toLowerCase(),
-      );
-
-      return category.length
-        ? category
-        : allData?.filter((product) =>
-            product.title.toLowerCase().includes(filter.toLowerCase()),
+    switch (filter) {
+      case "best":
+        return allData
+          ?.sort((a, b) => b.minimumOrderQuantity - a.minimumOrderQuantity)
+          .slice(0, 5);
+      case "preferred":
+        return allData?.filter((product) => product.isLoved);
+      case "cart":
+        return allData?.filter((product) => product.amountOfProductInCart);
+      default:
+        if (filter) {
+          const category = allData?.filter(
+            (product) =>
+              product.category.toLowerCase() === filter.toLowerCase(),
           );
-    } else {
-      return allData;
+          return category.length
+            ? category
+            : allData?.filter((product) =>
+                product.title.toLowerCase().includes(filter.toLowerCase()),
+              );
+        }
+        return allData;
     }
   };
 
@@ -43,16 +45,7 @@ export default function Products({ propFilter }) {
     <div className="border-b-solid mb-16 mt-24 flex flex-col gap-2 border-b-2 border-b-three pb-16">
       <h4 className={redHeading}>This Month</h4>
       <h2 className={mainHeading}>
-        {filter === "preferred"
-          ? "Preferred"
-          : filter === "Best"
-            ? "Best Selling"
-            : filter === "Cart"
-              ? "Cart"
-              : filter
-                ? filter.charAt(0).toUpperCase() + filter.slice(1)
-                : "All"}{" "}
-        Products
+        {`${filter?.charAt(0).toUpperCase() + filter?.slice(1) || "All"} Products`}
       </h2>
 
       <div className="my-6 flex animate-up flex-wrap justify-center gap-16 pb-8 transition-transform">

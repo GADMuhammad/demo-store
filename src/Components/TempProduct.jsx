@@ -33,17 +33,17 @@ function TempProduct({ props }) {
         break;
 
       case "cartMinus":
-        updatedData[index] = {
-          ...theClickedProduct,
-          amountOfProductInCart: --theClickedProduct.amountOfProductInCart,
-        };
+        if (updatedData[index].amountOfProductInCart > 0) {
+          updatedData[index] = {
+            ...theClickedProduct,
+            amountOfProductInCart: --theClickedProduct.amountOfProductInCart,
+          };
+        }
         break;
     }
 
     localStorage.setItem("allData", JSON.stringify(updatedData));
   };
-
-  if (img === "string") return;
 
   return (
     <div className="flex animate-opacity flex-col gap-1" key={title}>

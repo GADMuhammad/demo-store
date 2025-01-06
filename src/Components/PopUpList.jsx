@@ -82,7 +82,7 @@ export default function PopUpList({ list, PopUpDispatch }) {
     { icon: "close-outline", sort: "cartList" },
   ];
 
-  const openHandle = () => {
+  const closeHandle = () => {
     PopUpDispatch({ type: "close" });
     window.scrollTo(0, 0);
   };
@@ -98,11 +98,11 @@ export default function PopUpList({ list, PopUpDispatch }) {
       exit="hidden"
       onClick={(e) => e.stopPropagation()}
       ref={ref}
-      className={`absolute right-0 z-10 flex cursor-default rounded-md ${target()?.length ? "h-[38rem] w-[28rem]" : "h-96 w-[25rem]"} flex-col overflow-scroll bg-three p-4 shadow-popUp`}
+      className={`absolute right-0 z-10 flex cursor-default overflow-x-hidden rounded-md ${target()?.length ? "h-[38rem] w-[28rem]" : "h-96 w-[25rem]"} flex-col overflow-scroll bg-three p-4 shadow-popUp`}
     >
       <Link
         to={`/products/${list === "cartList" ? "cart" : "preferred"}`}
-        onClick={openHandle}
+        onClick={closeHandle}
         className="w-fit self-center rounded-md bg-five p-5 text-2xl font-medium leading-five tracking-widest text-one transition-transform hover:scale-105 active:scale-90"
       >
         Open the Page of {list === "cartList" ? "cart" : "preferred"} products
