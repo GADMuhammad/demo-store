@@ -46,7 +46,7 @@ function TempProduct({ props }) {
   if (img === "string") return;
 
   return (
-    <div className="animate-opacity flex flex-col gap-1" key={title}>
+    <div className="flex animate-opacity flex-col gap-1" key={title}>
       <div className="group relative flex h-96 w-96 cursor-pointer justify-center rounded-lg bg-three">
         <img
           className="relative h-1/2 w-1/2 scale-150 self-center rounded-lg transition-transform group-hover:scale-200"

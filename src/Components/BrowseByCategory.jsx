@@ -25,7 +25,7 @@ const CategoriesDetails = [
   },
   {
     img: "diamond-outline",
-    product: "Jewelry",
+    product: "Jewelery",
   },
   {
     img: "beer-outline",

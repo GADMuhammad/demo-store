@@ -9,8 +9,6 @@ export default function Products({ propFilter }) {
   const filter = useParams().filter;
 
   const products = () => {
-    const category = allData?.filter((product) => product.category === filter);
-
     if (propFilter === "best") {
       return allData
         ?.sort((a, b) => b.minimumOrderQuantity - a.minimumOrderQuantity)
@@ -20,6 +18,10 @@ export default function Products({ propFilter }) {
     } else if (filter === "cart") {
       return allData?.filter((product) => product.amountOfProductInCart);
     } else if (filter) {
+      const category = allData?.filter(
+        (product) => product.category.toLowerCase() === filter.toLowerCase(),
+      );
+
       return category.length
         ? category
         : allData?.filter((product) =>
