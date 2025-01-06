@@ -42,7 +42,7 @@ export default function Arrival() {
         {FeaturesDetails.map(({ title, paragraph, path, privateStyle }) => (
           <div
             key={title}
-            className={`flex cursor-pointer flex-col justify-end gap-1 rounded bg-two bg-cover ${title === "PlayStation 5" ? "max-sm:bg-contain" : ""} bg-center bg-no-repeat p-10 transition-shadow hover:shadow-feature max-sm:h-[30rem] ${privateStyle}`}
+            className={`flex flex-col justify-end gap-1 rounded bg-two bg-cover ${title === "PlayStation 5" ? "max-sm:bg-contain" : ""} bg-center bg-no-repeat p-10 transition-shadow hover:shadow-feature max-sm:h-[30rem] ${privateStyle}`}
           >
             <h3 className="justify-self-start font-inter text-3xl font-semibold leading-five tracking-wider text-one">
               {title}
