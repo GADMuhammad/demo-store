@@ -1,67 +1,39 @@
+import { Link, useNavigate } from "react-router-dom";
+import ProductRating from "./ProductRating";
+import { HandleProducts } from "./HandleProducts";
+
 const MAX_TITLE_LENGTH = 60;
 
-function TempProduct({ props }) {
+function TempProduct({ product }) {
   // prettier-ignore
-  const { title, price, discountPercentage, image, images, isLoved,  id, rating } = props
-
-  const index = id - 1,
-    img = image || images[0],
-    rateNum = Math.round(+rating);
-
-  const filledStars = Array(rateNum).fill(<ion-icon name="star" />),
-    emptyStars = Array(5 - rateNum).fill(<ion-icon name="star-outline" />);
-
+  const { title, price, discountPercentage,  images, isLoved,  id, rating } = product;
+  const index = id - 1;
   const loadData = JSON.parse(localStorage.getItem("allData"));
 
-  const buttonHandle = (action) => {
-    const updatedData = [...loadData];
-    const theClickedProduct = loadData[index];
+  const navigate = useNavigate();
 
-    switch (action) {
-      case "love":
-        updatedData[index] = {
-          ...theClickedProduct,
-          isLoved: !theClickedProduct.isLoved,
-        };
-        break;
-
-      case "cartPlus":
-        updatedData[index] = {
-          ...theClickedProduct,
-          amountOfProductInCart: ++theClickedProduct.amountOfProductInCart,
-        };
-        break;
-
-      case "cartMinus":
-        if (updatedData[index].amountOfProductInCart > 0) {
-          updatedData[index] = {
-            ...theClickedProduct,
-            amountOfProductInCart: --theClickedProduct.amountOfProductInCart,
-          };
-        }
-        break;
-    }
-
-    localStorage.setItem("allData", JSON.stringify(updatedData));
+  const NavigateToProduct = () => {
+    navigate(`/product/${index}`);
   };
 
   return (
     <div className="flex animate-opacity flex-col gap-1" key={title}>
       <div className="group relative flex h-96 w-96 cursor-pointer justify-center rounded-lg bg-three">
         <img
+          onClick={NavigateToProduct}
           className="relative h-1/2 w-1/2 scale-150 self-center rounded-lg transition-transform group-hover:scale-200"
-          src={img}
+          src={images[0]}
         />
 
         <button
-          onClick={() => buttonHandle("cartPlus")}
+          onClick={() => HandleProducts("cartPlus", index)}
           className="absolute flex h-16 w-full translate-y-80 items-center justify-center rounded-ee-lg rounded-es-lg bg-nine text-center text-2xl tracking-widest text-one opacity-0 transition-transform hover:bg-two group-hover:opacity-100"
         >
           Add To Cart
         </button>
 
         <button
-          onClick={() => buttonHandle("love")}
+          onClick={() => HandleProducts("love", index)}
           className="absolute right-5 top-5 flex rounded-full bg-one p-1 transition-transform hover:scale-110 hover:animate-spin"
         >
           <ion-icon name={isLoved ? "heart" : "heart-outline"} />
@@ -69,7 +41,7 @@ function TempProduct({ props }) {
 
         {loadData[index].amountOfProductInCart ? (
           <button
-            onClick={() => buttonHandle("cartMinus")}
+            onClick={() => HandleProducts("cartMinus", index)}
             className="absolute right-5 top-20 flex rounded-full bg-one p-1 transition-transform hover:scale-110 hover:animate-spin"
           >
             <ion-icon name="remove-circle-outline" />
@@ -79,11 +51,14 @@ function TempProduct({ props }) {
         )}
       </div>
 
-      <a className="w-96 text-2xl font-medium leading-five">
+      <Link
+        to={`/product/${index}`}
+        className="w-96 text-2xl font-medium leading-five"
+      >
         {title.length > MAX_TITLE_LENGTH
           ? title.slice(0, MAX_TITLE_LENGTH) + "..."
           : title}
-      </a>
+      </Link>
 
       <div className="flex items-center gap-2">
         <span className="text-3xl font-medium leading-five tracking-wide text-five">
@@ -103,10 +78,7 @@ function TempProduct({ props }) {
         ""
       )}
 
-      <div className="flex gap-2">
-        {filledStars}
-        {emptyStars}
-      </div>
+      <ProductRating rating={rating} />
     </div>
   );
 }

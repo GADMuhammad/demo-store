@@ -144,6 +144,13 @@ ion-icon[name="logo-apple"] {
   color: var(--color-one);
 }
 
+ion-icon[name="arrow-forward-circle-outline"],
+ion-icon[name="arrow-back-circle-outline"] {
+  height: 60px;
+  width: 50px;
+  color: var(--color-two);
+}
+
 div > div > ion-icon[name="heart-outline"],
 ion-icon[name="heart"],
 ion-icon[name="person-circle-outline"],

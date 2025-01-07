@@ -82,10 +82,6 @@ export default function PopUpList({ list, PopUpDispatch }) {
     { icon: "close-outline", sort: "cartList" },
   ];
 
-  const closeHandle = () => {
-    PopUpDispatch({ type: "close" });
-    window.scrollTo(0, 0);
-  };
   return (
     <motion.div
       variants={{
@@ -102,7 +98,7 @@ export default function PopUpList({ list, PopUpDispatch }) {
     >
       <Link
         to={`/products/${list === "cartList" ? "cart" : "preferred"}`}
-        onClick={closeHandle}
+        onClick={() => window.scrollTo(0, 0)}
         className="w-fit self-center rounded-md bg-five p-5 text-2xl font-medium leading-five tracking-widest text-one transition-transform hover:scale-105 active:scale-90"
       >
         Open the Page of {list === "cartList" ? "cart" : "preferred"} products

@@ -6,6 +6,7 @@ export default {
       fontFamily: {
         inter: ["Inter", "Poppins", "sans-serif"],
         poppins: ["Poppins", "Inter", "sans-serif"],
+        Lobster: ["Lobster", "Poppins", "Inter", "sans-serif"],
       },
       boxShadow: {
         image:
@@ -30,8 +31,8 @@ export default {
       screens: {
         medium_lg: "1200px",
         "semi-sm": "704px",
+        "md-lg": "800px",
         sm: "620px",
-        mobile: "550px",
       },
 
       colors: {

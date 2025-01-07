@@ -1,10 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import Loading from "./Loading";
 import TempProducts from "./TempProduct";
 import { HeadingContext } from "../App";
 import { useParams } from "react-router-dom";
 
-export default function Products({ propFilter }) {
+export default function Products({ propFilter, category }) {
   const allData = JSON.parse(localStorage.getItem("allData")) || [];
   const filter = useParams().filter || propFilter;
 
@@ -14,21 +14,26 @@ export default function Products({ propFilter }) {
         return allData
           ?.sort((a, b) => b.minimumOrderQuantity - a.minimumOrderQuantity)
           .slice(0, 5);
+      case "related": {
+        const randomItems = allData
+          ?.filter((product) => product.category === category)
+          .slice(0, 5);
+        return randomItems;
+      }
       case "preferred":
         return allData?.filter((product) => product.isLoved);
       case "cart":
         return allData?.filter((product) => product.amountOfProductInCart);
       default:
         if (filter) {
-          const category = allData?.filter(
+          return allData?.filter(
             (product) =>
-              product.category.toLowerCase() === filter.toLowerCase(),
+              product.category.toLowerCase().includes(filter.toLowerCase()) ||
+              product.title.toLowerCase().includes(filter.toLowerCase()) ||
+              product?.tags?.some((tag) =>
+                tag.toLowerCase().includes(filter.toLowerCase()),
+              ),
           );
-          return category.length
-            ? category
-            : allData?.filter((product) =>
-                product.title.toLowerCase().includes(filter.toLowerCase()),
-              );
         }
         return allData;
     }
@@ -36,10 +41,6 @@ export default function Products({ propFilter }) {
 
   const { redHeading, mainHeading } = useContext(HeadingContext);
   const productsNumber = products()?.length;
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
     <div className="border-b-solid mb-16 mt-24 flex flex-col gap-2 border-b-2 border-b-three pb-16">
@@ -50,7 +51,7 @@ export default function Products({ propFilter }) {
 
       <div className="my-6 flex animate-up flex-wrap justify-center gap-16 pb-8 transition-transform">
         {products()?.map((product) => (
-          <TempProducts props={product} key={product.id} />
+          <TempProducts product={product} key={product.id} />
         )) ?? <Loading />}
         {!productsNumber ? (
           <p className="mx-auto animate-fade text-2xl font-medium leading-five">

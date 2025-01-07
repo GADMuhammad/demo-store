@@ -8,10 +8,11 @@ import ErrorElement from "./Components/ErrorElement";
 import Home from "./Components/Home";
 import Signup from "./Components/Signup";
 import loader from "./Components/loader";
+import ProductPage from "./ProductPage";
 
 const redHeading =
     "border-l-solid rounded border-l-[16px] border-l-five pl-6 text-3xl font-semibold leading-five text-five",
-  mainHeading = "font-inter text-6xl font-semibold leading-nine";
+  mainHeading = "font-poppins text-5xl font-semibold leading-nine";
 
 export const HeadingContext = createContext();
 
@@ -69,6 +70,7 @@ function App() {
           loader,
         },
         { path: "/signup", element: <Signup /> },
+        { path: "/product/:productIndex", element: <ProductPage />, loader },
         { path: "*", element: <ErrorElement /> },
       ],
     },

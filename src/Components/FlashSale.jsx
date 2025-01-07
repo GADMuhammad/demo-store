@@ -18,7 +18,7 @@ const FlashSale = ({ timerDate }) => {
         <>
           <Slider {...sliderSettings} className="max-w-screen max-h-[35rem]">
             {loadData.map((product) => (
-              <TempProduct key={product.title} props={product} />
+              <TempProduct key={product.id} product={product} />
             ))}
           </Slider>
         </>

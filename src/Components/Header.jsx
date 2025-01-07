@@ -62,6 +62,7 @@ const Header = () => {
 
   const closeMenu = () => {
     if (menuRef.current.checked) menuRef.current.checked = false;
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -85,9 +86,9 @@ const Header = () => {
 
           <input ref={menuRef} type="checkbox" id="menu" />
           <label htmlFor="menu">
-            <div></div>
-            <div></div>
-            <div></div>
+            <div />
+            <div />
+            <div />
           </label>
 
           <ul className="flex gap-20">

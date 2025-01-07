@@ -33,9 +33,10 @@ export default async function loader() {
     }
 
     const formattedProducts = allData.map((product, index) => ({
-      ...product,
       id: index + 1,
       category: chooseCategory(product),
+      tags: product.tags,
+      images: product.images || [product.image],
       title:
         !product.title.includes("Coffee") &&
         !product.title.includes("Espresso") &&
@@ -43,10 +44,12 @@ export default async function loader() {
           ? `${product.title} ${product.ingredients[0]}`
           : product.title,
       isLoved: false,
-      price: product.price ?? 12.5,
+      price: (product.price ?? 12.5).toFixed(2),
       amountOfProductInCart: 0,
       discountPercentage: product.discountPercentage ?? product.discount ?? 7.1,
       rating: product.rating?.rate ?? product.rating ?? 4.5,
+      description: `${product.description} ${product.warrantyInformation || ""}`,
+      dimensions: product.dimensions,
     }));
 
     localStorage.setItem("allData", JSON.stringify(formattedProducts));
