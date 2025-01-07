@@ -80,9 +80,12 @@ const Header = () => {
         <div
           className={`${styles.header} relative flex items-center justify-between py-6 before:absolute before:left-1/2 before:top-0 before:-z-10 before:h-full before:w-screen before:-translate-x-1/2 before:transform before:border-b-2 before:border-solid before:border-two before:bg-one before:content-['']`}
         >
-          <h1 className="track font-inter text-4xl font-bold leading-five">
+          <button
+            onClick={() => window.scrollTo(0, 0)}
+            className="track font-inter text-4xl font-bold leading-five tracking-widest"
+          >
             Exclusive
-          </h1>
+          </button>
 
           <input ref={menuRef} type="checkbox" id="menu" />
           <label htmlFor="menu">
