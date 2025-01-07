@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 export default function Enhance({ timerDate }) {
   return (
-    <div className="max-mobile:mx-0 mx-32 my-20 flex items-center gap-10 rounded-md bg-two p-10 max-xl:flex-col max-xl:gap-0 max-xl:pb-20">
-      <div className="flex flex-col justify-center gap-12 px-20 max-xl:order-1 max-xl:items-center">
+    <div className="max-mobile:mx-0 mx-10 my-20 flex items-center gap-10 rounded-md bg-two px-20 py-10 max-xl:flex-col max-xl:gap-0 max-xl:pb-20">
+      <div className="px-30 flex flex-col justify-center gap-12 max-xl:order-1 max-xl:items-center">
         <span className="text-2xl font-semibold leading-three tracking-wider text-six">
           Categories
         </span>
@@ -39,9 +39,9 @@ export default function Enhance({ timerDate }) {
           <Link to="/products">Buy Now!</Link>
         </motion.div>
       </div>
-      <div className="max-mobile:hidden items-start justify-start">
+      <div className="max-mobile:hidden items-start justify-start max-semi-sm:hidden">
         <img
-          className="max-w-[600px] self-start max-xl:max-w-[400px] max-semi-sm:hidden"
+          className="max-w-[600px] self-start max-xl:max-w-[400px]"
           src="/headphones.png"
         />
       </div>

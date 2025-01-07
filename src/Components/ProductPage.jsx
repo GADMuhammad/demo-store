@@ -146,7 +146,7 @@ export default function ProductPage() {
                 {label}
               </motion.button>
             ))}
-
+            {/* Display the next Product !! */}
             <div className="flex w-fit items-center justify-center gap-10 px-1 py-2">
               <button
                 onClick={() => handleProducts("cartMinus", productIndex)}
