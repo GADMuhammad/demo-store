@@ -41,7 +41,7 @@ export default function Enhance({ timerDate }) {
       </div>
       <div className="max-mobile:hidden items-start justify-start">
         <img
-          className="max-w-[600px] self-start max-xl:max-w-[400px]"
+          className="max-w-[600px] self-start max-xl:max-w-[400px] max-semi-sm:hidden"
           src="/headphones.png"
         />
       </div>
