@@ -8,7 +8,7 @@ import ErrorElement from "./Components/ErrorElement";
 import Home from "./Components/Home";
 import Signup from "./Components/Signup";
 import loader from "./Components/loader";
-import ProductPage from "./ProductPage";
+import ProductPage from "./Components/ProductPage";
 
 const redHeading =
     "border-l-solid rounded border-l-[16px] border-l-five pl-6 text-3xl font-semibold leading-five text-five",

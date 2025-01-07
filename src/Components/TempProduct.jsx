@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import ProductRating from "./ProductRating";
-import { HandleProducts } from "./HandleProducts";
+import { handleProducts } from "./handleProducts";
 
 const MAX_TITLE_LENGTH = 60;
 
@@ -14,6 +14,7 @@ function TempProduct({ product }) {
 
   const NavigateToProduct = () => {
     navigate(`/product/${index}`);
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -26,14 +27,14 @@ function TempProduct({ product }) {
         />
 
         <button
-          onClick={() => HandleProducts("cartPlus", index)}
+          onClick={() => handleProducts("cartPlus", index)}
           className="absolute flex h-16 w-full translate-y-80 items-center justify-center rounded-ee-lg rounded-es-lg bg-nine text-center text-2xl tracking-widest text-one opacity-0 transition-transform hover:bg-two group-hover:opacity-100"
         >
           Add To Cart
         </button>
 
         <button
-          onClick={() => HandleProducts("love", index)}
+          onClick={() => handleProducts("love", index)}
           className="absolute right-5 top-5 flex rounded-full bg-one p-1 transition-transform hover:scale-110 hover:animate-spin"
         >
           <ion-icon name={isLoved ? "heart" : "heart-outline"} />
@@ -41,7 +42,7 @@ function TempProduct({ product }) {
 
         {loadData[index].amountOfProductInCart ? (
           <button
-            onClick={() => HandleProducts("cartMinus", index)}
+            onClick={() => handleProducts("cartMinus", index)}
             className="absolute right-5 top-20 flex rounded-full bg-one p-1 transition-transform hover:scale-110 hover:animate-spin"
           >
             <ion-icon name="remove-circle-outline" />
