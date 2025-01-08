@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Loader = () => {
+const Loading = () => {
   return (
     <StyledWrapper>
       <div className="loading-bar">Loading</div>
@@ -59,4 +59,4 @@ const StyledWrapper = styled.div`
   }
 `;
 
-export default Loader;
+export default Loading;

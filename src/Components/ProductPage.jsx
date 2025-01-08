@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import ProductRating from "./ProductRating";
@@ -11,18 +11,25 @@ const paragraphStyle =
   imagesBtnsStyle = "max-md-lg:block hidden";
 
 export default function ProductPage() {
-  const productIndex = +useParams().productIndex;
-  const product =
-    JSON.parse(localStorage.getItem("allData"))[productIndex] || [];
+  const productIndex = +useParams().productIndex,
+    allData = JSON.parse(localStorage.getItem("allData"));
+  const numberOfProducts = allData.length;
+
+  const product = allData[productIndex] || [];
 
   // prettier-ignore
   const { title, price, discountPercentage, images, isLoved, amountOfProductInCart, category, tags, rating, description, dimensions } = product;
   const [displayedImage, setDisplayedImage] = useState(0);
+  const productNavigate = useNavigate();
 
   useEffect(() => {
     !images.some((img) => img === images[displayedImage]) &&
       setDisplayedImage(0);
   }, [images, displayedImage]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [productIndex]);
 
   const buttons = [
     {
@@ -37,22 +44,35 @@ export default function ProductPage() {
           productIndex,
         ),
     },
+    {
+      label: `Go to the ${productIndex + 1 === numberOfProducts ? "first" : "next"} product`,
+      onClick: () =>
+        productNavigate(
+          `/product/${productIndex + 1 === numberOfProducts ? 0 : productIndex + 1}`,
+        ),
+    },
+    {
+      label: `Go to the ${!productIndex ? "last" : "previous"} product`,
+      onClick: () =>
+        productNavigate(
+          `/product/${productIndex ? productIndex - 1 : numberOfProducts - 1}`,
+        ),
+    },
   ];
-
-  if (!product) return <div>Product not found!</div>;
 
   return (
     <>
       <div
-        className={`flex animate-opacity gap-4 max-xl:flex-wrap ${images.length > 1 ? "justify-center" : "justify-evenly"} py-20`}
+        key={productIndex}
+        className={`flex animate-opacity gap-4 max-xl:flex-wrap ${images?.length > 1 ? "justify-center" : "justify-evenly"} py-20`}
       >
-        {images.length > 1 && (
-          <div className="max-md-lg:hidden flex w-1/4 flex-col items-center justify-center gap-5">
+        {images?.length > 1 && (
+          <div className="flex w-1/4 flex-col items-center justify-center gap-5 max-md-lg:hidden">
             {images.map((image, index) => (
               <img
                 key={image}
                 src={image}
-                onClick={() => setDisplayedImage(image)}
+                onClick={() => setDisplayedImage(images.indexOf(image))}
                 alt={`The image number ${index + 1} of the product.`}
                 className="h-[190px] w-[170px] cursor-pointer rounded-xl bg-three"
               />
@@ -60,11 +80,11 @@ export default function ProductPage() {
           </div>
         )}
 
-        {images.length > 1 && (
+        {images?.length > 1 && (
           <button
             onClick={() =>
               setDisplayedImage((prev) =>
-                prev === 0 ? images.length - 1 : prev - 1,
+                prev === 0 ? images?.length - 1 : prev - 1,
               )
             }
             className={imagesBtnsStyle}
@@ -76,7 +96,7 @@ export default function ProductPage() {
         <img
           src={images[displayedImage]}
           alt="number 1"
-          className="max-md:order-0 h-[600px] w-[500px] rounded-xl bg-three"
+          className="max-md:order-0 h-auto w-[500px] self-center rounded-xl bg-three"
         />
 
         {images.length > 1 && (
@@ -118,6 +138,9 @@ export default function ProductPage() {
             )}
           </p>
 
+          <p className={paragraphStyle}>
+            {`Product Number: ${productIndex + 1} ${productIndex + 1 === allData.length ? "(The last product)." : ""}`}
+          </p>
           <p
             className={`${paragraphStyle} ${!dimensions ? "border-b-solid border-b-2 border-b-two pb-6" : ""}`}
           >
@@ -134,20 +157,20 @@ export default function ProductPage() {
           )}
 
           <div className="flex flex-wrap justify-evenly gap-4">
-            {buttons.map(({ label, onClick }) => (
+            {buttons.map(({ label, onClick }, index) => (
               <motion.button
                 key={onClick}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: "spring", stiffness: 700 }}
-                className="w-fit self-center rounded-md bg-five px-10 py-5 text-2xl font-medium leading-five tracking-widest text-one"
+                className={`w-fit self-center rounded-md bg-five px-10 py-5 text-2xl font-medium leading-five tracking-widest text-one ${index >= 2 ? "order-2" : ""}`}
                 onClick={onClick}
               >
                 {label}
               </motion.button>
             ))}
             {/* Display the next Product !! */}
-            <div className="flex w-fit items-center justify-center gap-10 px-1 py-2">
+            <div className="order-1 flex w-fit items-center justify-center gap-10 px-1 py-2">
               <button
                 onClick={() => handleProducts("cartMinus", productIndex)}
                 className="border border-solid border-two p-2 transition-transform hover:scale-110"
