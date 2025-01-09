@@ -4,7 +4,7 @@ import TempProducts from "./TempProduct";
 import { HeadingContext } from "../App";
 import { useParams } from "react-router-dom";
 
-export default function Products({ propFilter, category }) {
+export default function Products({ propFilter, displayedProduct }) {
   const allData = JSON.parse(localStorage.getItem("allData")) || [];
   const filter = useParams().filter || propFilter;
 
@@ -15,10 +15,15 @@ export default function Products({ propFilter, category }) {
           ?.sort((a, b) => b.minimumOrderQuantity - a.minimumOrderQuantity)
           .slice(0, 5);
       case "related": {
-        const randomItems = allData
-          ?.filter((product) => product.category === category)
+        // the first condition to display related iphones if the displayedProduct is a iphone - and then the general condition
+        return allData
+          ?.filter((product) =>
+            displayedProduct?.title?.toLowerCase().includes("iphone")
+              ? product?.title?.toLowerCase().includes("iphone")
+              : product.category === displayedProduct.category &&
+                product.title !== displayedProduct.title,
+          )
           .slice(0, 5);
-        return randomItems;
       }
       case "preferred":
         return allData?.filter((product) => product.isLoved);
@@ -32,7 +37,8 @@ export default function Products({ propFilter, category }) {
               product.title.toLowerCase().includes(filter.toLowerCase()) ||
               product?.tags?.some((tag) =>
                 tag.toLowerCase().includes(filter.toLowerCase()),
-              ),
+              ) ||
+              +product.id === +filter,
           );
         }
         return allData;

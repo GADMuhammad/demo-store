@@ -112,7 +112,7 @@ export default function ProductPage() {
           </button>
         )}
 
-        <div className="flex flex-col gap-5 p-10">
+        <div className="flex flex-col gap-5 whitespace-pre-wrap p-10 max-xl:px-0">
           <h1 className="font-inter text-4xl font-semibold leading-seven tracking-wider">
             {title}
           </h1>
@@ -190,7 +190,7 @@ export default function ProductPage() {
           </div>
         </div>
       </div>
-      <Products propFilter="related" category={category} />
+      <Products propFilter="related" displayedProduct={product} />
     </>
   );
 }
