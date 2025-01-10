@@ -94,9 +94,10 @@ export default function ProductPage() {
         )}
 
         <img
+          key={images[displayedImage]}
           src={images[displayedImage]}
           alt="number 1"
-          className="max-md:order-0 h-auto w-[500px] self-center rounded-xl bg-three"
+          className="max-md:order-0 animate-fast-opacity h-auto w-[500px] self-center rounded-xl bg-three"
         />
 
         {images.length > 1 && (
