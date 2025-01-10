@@ -94,6 +94,7 @@ export default {
         in: "slide-in 0.5s  forwards ease-in-out",
         fade: "fade-in 0.5s  forwards ease-in-out",
         opacity: "opacity 0.5s  forwards ease-in-out",
+        "fast-opacity": "opacity 0.25s forwards ease-in-out",
       },
 
       lineHeight: {
