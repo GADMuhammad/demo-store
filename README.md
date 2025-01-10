@@ -14,9 +14,9 @@ An e-commerce demo project built with React.js and styled using Tailwind CSS. Th
 - **Sale Timer:** We have implemented a sale timer to inform you of the remaining time until the sale ends.
 - **Responsive Design:** The store is designed to be fully responsive, ensuring a seamless browsing experience across all devices which makes user able to access the store on whatever device he has.
 - **Contact me:** We have provided a page to contact the developer himself in case you have a recommendation. It will be much considered.
+- **🆕Product Page:** Providing the user the ability to display a product with its details on a separate page.
 
 ## Coming Soon:
-- **Product Page:** Providing the user the ability to display a product with its details on a separate page.
 - **Sign in:** We are currently working on adding the ability to register in the store via email.
 
 
