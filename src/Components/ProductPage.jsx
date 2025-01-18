@@ -34,14 +34,14 @@ export default function ProductPage() {
   const buttons = [
     {
       label: `${isLoved ? "Remove from" : "Add to"} favorites`,
-      onClick: () => handleProducts("love", productID),
+      onClick: () => handleProducts("love", productID - 1),
     },
     {
       label: `${amountOfProductInCart ? "Remove from" : "Add to"} Cart`,
       onClick: () =>
         handleProducts(
           amountOfProductInCart ? "cartRemove" : "cartPlus",
-          productID,
+          productID - 1,
         ),
     },
     {
@@ -176,7 +176,7 @@ export default function ProductPage() {
             ))}
             <div className="order-1 flex w-fit items-center justify-center gap-10 px-1 py-2">
               <motion.button
-                onClick={() => handleProducts("cartMinus", productID)}
+                onClick={() => handleProducts("cartMinus", productID - 1)}
                 className="rounded-md border border-solid border-two p-2"
                 {...motionProps}
               >
@@ -187,7 +187,7 @@ export default function ProductPage() {
               </p>
               <motion.button
                 className="rounded-md bg-five p-2 text-one"
-                onClick={() => handleProducts("cartPlus", productID)}
+                onClick={() => handleProducts("cartPlus", productID - 1)}
                 {...motionProps}
               >
                 <ion-icon name="add-outline" />
