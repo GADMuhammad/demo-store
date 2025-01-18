@@ -60,11 +60,17 @@ export default function ProductPage() {
     },
   ];
 
+  const motionProps = {
+    whileHover: { scale: 1.1 },
+    whileTap: { scale: 0.9 },
+    transition: { type: "spring", stiffness: 700 },
+  };
+
   return (
     <>
       <div
         key={productIndex}
-        className={`flex animate-opacity gap-4 max-xl:flex-wrap ${images?.length > 1 ? "justify-center" : "justify-evenly"} py-20`}
+        className={`flex animate-opacity gap-4 max-xl:flex-wrap ${images?.length > 1 ? "justify-center" : "justify-evenly"} py-10`}
       >
         {images?.length > 1 && (
           <div className="flex w-1/4 flex-col items-center justify-center gap-5 max-md-lg:hidden">
@@ -97,7 +103,7 @@ export default function ProductPage() {
           key={images[displayedImage]}
           src={images[displayedImage]}
           alt="number 1"
-          className="max-md:order-0 animate-fast-opacity h-auto w-[500px] self-center rounded-xl bg-three"
+          className="max-md:order-0 h-auto w-[500px] animate-fast-opacity self-center rounded-xl bg-three"
         />
 
         {images.length > 1 && (
@@ -161,32 +167,31 @@ export default function ProductPage() {
             {buttons.map(({ label, onClick }, index) => (
               <motion.button
                 key={onClick}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                transition={{ type: "spring", stiffness: 700 }}
                 className={`w-fit self-center rounded-md bg-five px-10 py-5 text-2xl font-medium leading-five tracking-widest text-one ${index >= 2 ? "order-2" : ""}`}
                 onClick={onClick}
+                {...motionProps}
               >
                 {label}
               </motion.button>
             ))}
-            {/* Display the next Product !! */}
             <div className="order-1 flex w-fit items-center justify-center gap-10 px-1 py-2">
-              <button
+              <motion.button
                 onClick={() => handleProducts("cartMinus", productIndex)}
-                className="border border-solid border-two p-2 transition-transform hover:scale-110"
+                className="rounded-md border border-solid border-two p-2"
+                {...motionProps}
               >
                 <ion-icon name="remove-outline" />
-              </button>
+              </motion.button>
               <p className="font-Lobster text-5xl font-bold leading-9 tracking-wider">
                 {amountOfProductInCart}
               </p>
-              <button
-                className="bg-five p-2 text-one transition-transform hover:scale-110"
+              <motion.button
+                className="rounded-md bg-five p-2 text-one"
                 onClick={() => handleProducts("cartPlus", productIndex)}
+                {...motionProps}
               >
                 <ion-icon name="add-outline" />
-              </button>
+              </motion.button>
             </div>
           </div>
         </div>

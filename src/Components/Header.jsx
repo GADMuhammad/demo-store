@@ -70,7 +70,7 @@ const Header = () => {
       <div className="sticky top-0 z-10 shadow-feature">
         <div className="relative mx-auto flex h-12 items-center justify-center py-4 text-2xl text-one before:absolute before:-z-10 before:mx-auto before:h-full before:w-screen before:bg-two before:content-[''] max-md:hidden">
           <p className="flex gap-4 text-2xl">
-            Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
+            Summer Sale For All Swim Suits And Free Express Delivery - OFF 50% !
             <Link to="/products" className="underline hover:no-underline">
               Shop Now
             </Link>

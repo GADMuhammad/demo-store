@@ -15,7 +15,7 @@ export default function Products({ propFilter, displayedProduct }) {
           ?.sort((a, b) => b.minimumOrderQuantity - a.minimumOrderQuantity)
           .slice(0, 5);
       case "related": {
-        // the first condition to display related iphones if the displayedProduct is a iphone - and then the general condition
+        // the first condition to display related iPhones if the displayedProduct is a iphone - and then the general condition
         return allData
           ?.filter((product) =>
             displayedProduct?.title?.toLowerCase().includes("iphone")
