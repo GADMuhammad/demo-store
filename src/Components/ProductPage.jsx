@@ -11,11 +11,11 @@ const paragraphStyle =
   imagesBtnsStyle = "max-md-lg:block hidden";
 
 export default function ProductPage() {
-  const productIndex = +useParams().productIndex,
+  const productID = +useParams().productID,
     allData = JSON.parse(localStorage.getItem("allData"));
   const numberOfProducts = allData.length;
 
-  const product = allData[productIndex] || [];
+  const product = allData[productID - 1] || [];
 
   // prettier-ignore
   const { title, price, discountPercentage, images, isLoved, amountOfProductInCart, category, tags, rating, description, dimensions } = product;
@@ -29,33 +29,33 @@ export default function ProductPage() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [productIndex]);
+  }, [productID]);
 
   const buttons = [
     {
       label: `${isLoved ? "Remove from" : "Add to"} favorites`,
-      onClick: () => handleProducts("love", productIndex),
+      onClick: () => handleProducts("love", productID),
     },
     {
       label: `${amountOfProductInCart ? "Remove from" : "Add to"} Cart`,
       onClick: () =>
         handleProducts(
           amountOfProductInCart ? "cartRemove" : "cartPlus",
-          productIndex,
+          productID,
         ),
     },
     {
-      label: `Go to the ${productIndex + 1 === numberOfProducts ? "first" : "next"} product`,
+      label: `Go to the ${productID === numberOfProducts ? "first" : "next"} product`,
       onClick: () =>
         productNavigate(
-          `/product/${productIndex + 1 === numberOfProducts ? 0 : productIndex + 1}`,
+          `/product/${productID === numberOfProducts ? 1 : productID + 1}`,
         ),
     },
     {
-      label: `Go to the ${!productIndex ? "last" : "previous"} product`,
+      label: `Go to the ${productID === 1 ? "last" : "previous"} product`,
       onClick: () =>
         productNavigate(
-          `/product/${productIndex ? productIndex - 1 : numberOfProducts - 1}`,
+          `/product/${productID === 1 ? numberOfProducts : productID - 1}`,
         ),
     },
   ];
@@ -69,7 +69,7 @@ export default function ProductPage() {
   return (
     <>
       <div
-        key={productIndex}
+        key={productID}
         className={`flex animate-opacity gap-4 max-xl:flex-wrap ${images?.length > 1 ? "justify-center" : "justify-evenly"} py-10`}
       >
         {images?.length > 1 && (
@@ -102,7 +102,7 @@ export default function ProductPage() {
         <img
           key={images[displayedImage]}
           src={images[displayedImage]}
-          alt="number 1"
+          alt="One of the product images"
           className="max-md:order-0 h-auto w-[500px] animate-fast-opacity self-center rounded-xl bg-three"
         />
 
@@ -146,7 +146,7 @@ export default function ProductPage() {
           </p>
 
           <p className={paragraphStyle}>
-            {`Product Number: ${productIndex + 1} ${productIndex + 1 === allData.length ? "(The last product)." : ""}`}
+            {`Product Number: ${productID} ${productID + 1 === allData.length ? "(The last product)." : ""}`}
           </p>
           <p
             className={`${paragraphStyle} ${!dimensions ? "border-b-solid border-b-2 border-b-two pb-6" : ""}`}
@@ -176,7 +176,7 @@ export default function ProductPage() {
             ))}
             <div className="order-1 flex w-fit items-center justify-center gap-10 px-1 py-2">
               <motion.button
-                onClick={() => handleProducts("cartMinus", productIndex)}
+                onClick={() => handleProducts("cartMinus", productID)}
                 className="rounded-md border border-solid border-two p-2"
                 {...motionProps}
               >
@@ -187,7 +187,7 @@ export default function ProductPage() {
               </p>
               <motion.button
                 className="rounded-md bg-five p-2 text-one"
-                onClick={() => handleProducts("cartPlus", productIndex)}
+                onClick={() => handleProducts("cartPlus", productID)}
                 {...motionProps}
               >
                 <ion-icon name="add-outline" />

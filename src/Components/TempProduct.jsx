@@ -13,7 +13,7 @@ function TempProduct({ product }) {
   const navigate = useNavigate();
 
   const NavigateToProduct = () => {
-    navigate(`/product/${index}`);
+    navigate(`/product/${index + 1}`);
     window.scrollTo(0, 0);
   };
 

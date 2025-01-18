@@ -55,6 +55,7 @@ function App() {
     {
       path: "/",
       element: <Header />,
+      errorElement: <ErrorElement />,
       children: [
         {
           index: true,
@@ -70,8 +71,7 @@ function App() {
           loader,
         },
         { path: "/signup", element: <Signup /> },
-        { path: "/product/:productIndex", element: <ProductPage />, loader },
-        { path: "*", element: <ErrorElement /> },
+        { path: "/product/:productID", element: <ProductPage />, loader },
       ],
     },
   ]);
