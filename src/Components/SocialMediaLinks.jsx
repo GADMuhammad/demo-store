@@ -13,26 +13,23 @@ const contactInfo = [
   },
   {
     platform: "github",
-    url: "https://github.com/GADMuhammad",
+    url: "https://github.com/GADMuhammad?tab=repositories",
   },
 ];
 
 export default function SocialMediaLinks() {
   return (
-    <div className="contact animate-fade my-8 flex flex-wrap justify-center gap-14">
-      {contactInfo.map((info) => (
+    <div className="contact my-8 flex animate-fade flex-wrap justify-center gap-14">
+      {contactInfo.map(({ platform, url }) => (
         <a
-          key={info.platform}
-          href={info.url}
+          key={platform}
+          href={url}
           target="_blank"
           className="flex flex-col justify-center gap-2"
         >
-          <img
-            className="h-14 w-14 self-center"
-            src={`/${info.platform}.svg`}
-          />
+          <img className="h-14 w-14 self-center" src={`/${platform}.svg`} />
           <p className="text-3xl font-normal leading-relaxed tracking-wide text-black">
-            {info.platform}
+            {platform}
           </p>
         </a>
       ))}

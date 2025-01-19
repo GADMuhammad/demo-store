@@ -95,7 +95,7 @@ export default function ProductPage() {
             }
             className={imagesBtnsStyle}
           >
-            <ion-icon name="arrow-back-circle-outline"></ion-icon>
+            <ion-icon name="arrow-back-circle-outline" />
           </button>
         )}
 
@@ -103,7 +103,7 @@ export default function ProductPage() {
           key={images[displayedImage]}
           src={images[displayedImage]}
           alt="One of the product images"
-          className="max-md:order-0 h-auto w-[500px] animate-fast-opacity self-center rounded-xl bg-three"
+          className="max-md:order-0 h-auto w-[500px] animate-fast-opacity self-center rounded-xl"
         />
 
         {images.length > 1 && (
@@ -115,7 +115,7 @@ export default function ProductPage() {
             }
             className={imagesBtnsStyle}
           >
-            <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+            <ion-icon name="arrow-forward-circle-outline" />
           </button>
         )}
 
