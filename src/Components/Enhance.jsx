@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Enhance({ timerDate }) {
   return (
-    <div className="max-mobile:mx-0 mx-10 my-20 flex items-center gap-10 rounded-md bg-two px-20 max-xl:flex-col max-xl:gap-0 max-xl:pb-20">
+    <div className="max-mobile:mx-0 mx-10 my-20 flex items-center gap-10 rounded-md bg-two px-20 max-xl:flex-col max-xl:gap-0 max-xl:py-20">
       <div className="px-30 flex flex-col justify-center gap-12 max-xl:order-1 max-xl:items-center">
         <span className="text-2xl font-semibold leading-three tracking-wider text-six">
           Categories

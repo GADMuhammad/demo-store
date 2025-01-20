@@ -58,6 +58,10 @@ export default function ProductPage() {
           `/product/${productID === 1 ? numberOfProducts : productID - 1}`,
         ),
     },
+    {
+      label: `Show all ${category} products`,
+      onClick: () => productNavigate(`/products/${category}`),
+    },
   ];
 
   const motionProps = {
