@@ -67,7 +67,7 @@ function App() {
         { path: "/products", element: <Products />, loader },
         {
           path: "/products/:filter",
-          element: <Products filter="cart" />,
+          element: <Products />,
           loader,
         },
         { path: "/signup", element: <Signup /> },
