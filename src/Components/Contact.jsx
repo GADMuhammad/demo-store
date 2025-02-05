@@ -50,7 +50,20 @@ const Contact = () => {
 
   return (
     <>
-      <div className="my-32 flex animate-fade justify-between gap-10 max-lg:flex-col">
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, scale: 1.4 },
+          visible: { opacity: 1, scale: 1 },
+        }}
+        transition={{
+          delay: 0.15,
+          type: "spring",
+          stiffness: 200,
+        }}
+        initial="hidden"
+        animate="visible"
+        className="my-32 flex justify-between gap-10 max-lg:flex-col"
+      >
         <div className="flex flex-col justify-center gap-8 p-10 shadow-contact max-lg:order-1 max-lg:flex-row max-lg:justify-around max-md:flex-col">
           {info.map(({ icon, label, note, link_href, link_label }, index) => {
             return (
@@ -75,7 +88,7 @@ const Contact = () => {
         </div>
 
         <form
-          action="https://formsubmit.co/3e0c07fa1abe4e41b9ce0eed3c5ef56f "
+          action="https://formsubmit.co/3e0c07fa1abe4e41b9ce0eed3c5ef56f"
           method="POST"
           className="grid w-3/4 grid-cols-3 gap-10 rounded-md p-8 shadow-contact max-lg:w-full max-md:grid-cols-1"
         >
@@ -107,7 +120,7 @@ const Contact = () => {
             Send Message
           </motion.button>
         </form>
-      </div>
+      </motion.div>
       <SocialMediaLinks />
     </>
   );

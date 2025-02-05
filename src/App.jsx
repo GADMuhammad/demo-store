@@ -1,60 +1,85 @@
-import { Fragment, useState } from "react";
-import content from "./content";
-import { motion } from "framer-motion";
+import Header from "./Components/Header";
+import { useState, useEffect, createContext } from "react";
+import About from "./Components/About";
+import Contact from "./Components/Contact";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Products from "./Components/Products";
+import ErrorElement from "./Components/ErrorElement";
+import Home from "./Components/Home";
+import Signup from "./Components/Signup";
+import loader from "./Components/loader";
+import ProductPage from "./Components/ProductPage";
+
+const redHeading =
+    "border-l-solid rounded border-l-[16px] border-l-five pl-6 text-3xl font-semibold leading-five text-five",
+  mainHeading = "font-poppins text-5xl font-semibold leading-nine";
+
+export const HeadingContext = createContext();
 
 function App() {
-  const [indexOfOpenQuestion, setIndexOfOpenQuestion] = useState(null);
+  // TIMER Start
+  const [remainingSeconds, setRemainingSecond] = useState(3600),
+    minutes = String(Math.floor(remainingSeconds / 60)).padStart(2, "0"),
+    seconds = String(remainingSeconds % 60).padStart(2, "0");
+
+  useEffect(() => {
+    const time = setInterval(
+      () => setRemainingSecond((prev) => (prev !== 0 ? prev - 1 : 3600)),
+      1000,
+    );
+
+    return () => clearInterval(time);
+  }, []);
+
+  const timerDate = [
+    {
+      label: "Days",
+      value: "03",
+    },
+    {
+      label: "Hours",
+      value: "23",
+    },
+    {
+      label: "Minutes",
+      value: minutes,
+    },
+    {
+      label: "Seconds",
+      value: seconds,
+    },
+  ];
+  // TIMER End
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Header />,
+      errorElement: <ErrorElement />,
+      children: [
+        {
+          index: true,
+          element: <Home timerDate={timerDate} />,
+          loader,
+        },
+        { path: "/about", element: <About /> },
+        { path: "/contact", element: <Contact /> },
+        { path: "/products", element: <Products />, loader },
+        {
+          path: "/products/:filter",
+          element: <Products />,
+          loader,
+        },
+        { path: "/signup", element: <Signup /> },
+        { path: "/product/:productID", element: <ProductPage />, loader },
+      ],
+    },
+  ]);
 
   return (
-    <main className="m-auto flex w-[60vw] flex-col gap-3 rounded-2xl bg-white px-8 pb-8 pt-10 max-lg:w-[75vw] max-sm:w-[85vw]">
-      <h1 className="mb-6 inline-flex items-center gap-4 text-4xl font-bold">
-        <img src="icon-star.svg" alt="Star Icon" />
-        FAQs
-      </h1>
-
-      {content.map(({ question, answer }, index) => (
-        <Fragment key={question}>
-          <button
-            onClick={() =>
-              setIndexOfOpenQuestion((prev) => (prev === index ? null : index))
-            }
-            className={`mr-4 flex justify-between gap-2 text-dark-purple transition-colors duration-1000 hover:text-sunny-purple max-lg:mr-2 ${
-              indexOfOpenQuestion !== index && index !== content.length - 1
-                ? "border-b-2 border-solid border-b-gray-200 pb-4"
-                : ""
-            }`}
-          >
-            <h2 className="text-left text-lg font-semibold max-first:text-base">
-              {question}
-            </h2>
-            <img
-              src={
-                indexOfOpenQuestion === index
-                  ? "/icon-minus.svg"
-                  : "/icon-plus.svg"
-              }
-              alt="Icon to collapse question."
-            />
-          </button>
-
-          {indexOfOpenQuestion === index && (
-            <motion.p
-              transition={{ type: "spring", stiffness: 325 }}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20, transition: { type: "tween" } }}
-              className={`${
-                index !== content.length - 1
-                  ? "mb-2 border-b-2 border-solid border-b-grayish-purple"
-                  : ""
-              } px-1 pb-2 text-left text-base text-gray-500`}
-            >
-              {answer}
-            </motion.p>
-          )}
-        </Fragment>
-      ))}
-    </main>
+    <HeadingContext.Provider value={{ redHeading, mainHeading }}>
+      <RouterProvider router={router} />
+    </HeadingContext.Provider>
   );
 }
 

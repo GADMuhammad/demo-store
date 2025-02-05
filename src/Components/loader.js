@@ -19,6 +19,7 @@ export default async function loader() {
       "https://fakestoreapi.com/products",
       "https://fakestoreapi.in/api/products",
     ];
+    // "https://api.sampleapis.com/coffee/hot",
 
     const responses = await Promise.all(apiUrls.map(async (url) => fetch(url)));
     const allData = [];
@@ -46,7 +47,7 @@ export default async function loader() {
             ? `${product.title} ${product.ingredients[0]}`
             : product.title,
         isLoved: false,
-        price: (product.price ?? 12.5).toFixed(2),
+        price: parseFloat(product.price ?? 12.5).toFixed(2),
         amountOfProductInCart: 0,
         discountPercentage:
           product.discountPercentage ?? product.discount ?? 7.1,

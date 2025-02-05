@@ -94,7 +94,7 @@ export default function PopUpList({ list, PopUpDispatch }) {
       exit="hidden"
       onClick={(e) => e.stopPropagation()}
       ref={ref}
-      className={`absolute right-0 z-10 flex cursor-default overflow-x-hidden rounded-md ${target()?.length ? "h-[38rem] w-[28rem]" : "h-96 w-[25rem]"} flex-col overflow-scroll bg-three p-4 shadow-popUp`}
+      className={`absolute right-0 z-10 flex cursor-default overflow-x-hidden rounded-md ${target()?.length ? "h-[38rem] w-[28rem]" : "h-96 w-[25rem] overflow-y-hidden"} flex-col overflow-scroll bg-three p-4 shadow-popUp`}
     >
       <Link
         to={`/products/${list === "cartList" ? "cart" : "preferred"}`}
