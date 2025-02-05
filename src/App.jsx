@@ -6,7 +6,7 @@ function App() {
   const [indexOfOpenQuestion, setIndexOfOpenQuestion] = useState(null);
 
   return (
-    <main className="m-auto mx-auto flex w-[60vw] flex-col gap-3 rounded-2xl bg-white px-8 pb-8 pt-10 max-lg:w-[75vw] max-sm:w-[85vw]">
+    <main className="m-auto flex w-[60vw] flex-col gap-3 rounded-2xl bg-white px-8 pb-8 pt-10 max-lg:w-[75vw] max-sm:w-[85vw]">
       <h1 className="mb-6 inline-flex items-center gap-4 text-4xl font-bold">
         <img src="icon-star.svg" alt="Star Icon" />
         FAQs
