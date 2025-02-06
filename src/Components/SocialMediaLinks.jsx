@@ -19,7 +19,7 @@ const contactInfo = [
 
 export default function SocialMediaLinks() {
   return (
-    <div className="contact my-8 flex animate-fade flex-wrap justify-center gap-14">
+    <section className="contact my-8 flex animate-fade flex-wrap justify-center gap-14">
       {contactInfo.map(({ platform, url }) => (
         <a
           key={platform}
@@ -33,6 +33,6 @@ export default function SocialMediaLinks() {
           </p>
         </a>
       ))}
-    </div>
+    </section>
   );
 }

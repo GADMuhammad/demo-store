@@ -50,7 +50,7 @@ const Contact = () => {
 
   return (
     <>
-      <motion.div
+      <motion.section
         variants={{
           hidden: { opacity: 0, scale: 1.4 },
           visible: { opacity: 1, scale: 1 },
@@ -120,7 +120,7 @@ const Contact = () => {
             Send Message
           </motion.button>
         </form>
-      </motion.div>
+      </motion.section>
       <SocialMediaLinks />
     </>
   );

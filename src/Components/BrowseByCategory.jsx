@@ -37,7 +37,7 @@ function BrowseByCategory() {
   const { redHeading, mainHeading } = useContext(HeadingContext);
 
   return (
-    <div className="flex animate-up flex-col gap-4">
+    <section className="flex animate-up flex-col gap-4">
       <h4 className={redHeading}>Categories</h4>
       <h2 className={mainHeading}>Browse By Category</h2>
 
@@ -55,7 +55,7 @@ function BrowseByCategory() {
           </Link>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

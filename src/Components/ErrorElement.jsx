@@ -25,7 +25,7 @@ export default function ErrorElement() {
   return (
     <>
       <Header />
-      <div className="my-12 flex flex-col gap-4">
+      <section className="my-12 flex flex-col gap-4">
         <img
           className="mx-auto mb-16 w-2/5"
           src="/undraw_page-not-found_6wni.svg"
@@ -47,7 +47,7 @@ export default function ErrorElement() {
           </Link>{" "}
           in {count} seconds.
         </p>
-      </div>
+      </section>
     </>
   );
 }

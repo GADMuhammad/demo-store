@@ -72,7 +72,7 @@ export default function ProductPage() {
 
   return (
     <>
-      <div
+      <section
         key={productID}
         className={`flex animate-opacity gap-4 max-xl:flex-wrap ${images?.length > 1 ? "justify-center" : "justify-evenly"} py-10`}
       >
@@ -199,7 +199,7 @@ export default function ProductPage() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
       <Products propFilter="related" displayedProduct={product} />
     </>
   );

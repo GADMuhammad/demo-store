@@ -83,7 +83,7 @@ export default function PopUpList({ list, PopUpDispatch }) {
   ];
 
   return (
-    <motion.div
+    <motion.section
       variants={{
         hidden: { opacity: 0, scale: 0.5, y: -15 },
         visible: { opacity: 1, scale: 1, y: 0 },
@@ -175,6 +175,6 @@ export default function PopUpList({ list, PopUpDispatch }) {
           $
         </p>
       )}
-    </motion.div>
+    </motion.section>
   );
 }

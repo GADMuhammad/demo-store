@@ -18,7 +18,7 @@ function TempProduct({ product }) {
   };
 
   return (
-    <div className="flex animate-opacity flex-col gap-1" key={title}>
+    <section className="flex animate-opacity flex-col gap-1" key={title}>
       <div className="group relative flex h-96 w-96 cursor-pointer justify-center rounded-lg bg-three">
         <img
           onClick={NavigateToProduct}
@@ -80,7 +80,7 @@ function TempProduct({ product }) {
       )}
 
       <ProductRating rating={rating} />
-    </div>
+    </section>
   );
 }
 

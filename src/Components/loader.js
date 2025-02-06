@@ -18,8 +18,8 @@ export default async function loader() {
       "https://dummyjson.com/products",
       "https://fakestoreapi.com/products",
       "https://fakestoreapi.in/api/products",
+      "https://api.sampleapis.com/coffee/hot",
     ];
-    // "https://api.sampleapis.com/coffee/hot",
 
     const responses = await Promise.all(apiUrls.map(async (url) => fetch(url)));
     const allData = [];

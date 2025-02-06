@@ -27,7 +27,7 @@ export default memo(function FlashSale({ timerDate }) {
   }, []);
 
   return (
-    <div className="border-b-solid relative mb-16 mt-24 flex animate-up flex-col gap-8 border-b-2 border-b-three pb-16 max-semi-sm:mt-40">
+    <section className="border-b-solid relative mb-16 mt-24 flex animate-up flex-col gap-8 border-b-2 border-b-three pb-16 max-semi-sm:mt-40">
       <h4 className={redHeading}>Today’s</h4>
       <div className="flex flex-wrap items-center justify-between gap-12 max-lg:justify-center">
         <h2 className={mainHeading}>Flash Sales</h2>
@@ -53,6 +53,6 @@ export default memo(function FlashSale({ timerDate }) {
         <Button />
       </div>
       {slider}
-    </div>
+    </section>
   );
 });

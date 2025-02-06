@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Signup = () => {
   return (
     <StyledWrapper>
-      <div className="card-switch animate-up">
+      <section className="card-switch animate-up">
         {/*  */}
         <label className="switch">
           <input type="checkbox" className="toggle" />
@@ -57,7 +57,7 @@ const Signup = () => {
           </div>
         </label>
         {/*  */}
-      </div>
+      </section>
     </StyledWrapper>
   );
 };

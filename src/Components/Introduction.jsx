@@ -14,7 +14,7 @@ const categories = [
 
 const Introduction = () => {
   return (
-    <div className="relative mt-10 flex animate-up flex-col max-lg:pt-0 max-md:mt-0 max-semi-sm:pt-40 md:flex-row">
+    <section className="relative mt-10 flex animate-up flex-col max-lg:pt-0 max-md:mt-0 max-semi-sm:pt-40 md:flex-row">
       <ul className="relative flex flex-col gap-6 pr-20 before:absolute before:h-full before:w-full before:-translate-y-10 before:translate-x-80 before:border-l-2 before:border-solid before:border-l-black before:content-[''] max-xl:hidden">
         {categories.map(({ category, path }) => (
           <Link
@@ -48,7 +48,7 @@ const Introduction = () => {
           src="/iphone.jpg"
         />
       </div>
-    </div>
+    </section>
   );
 };
 

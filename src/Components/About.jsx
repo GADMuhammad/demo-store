@@ -21,7 +21,7 @@ const paragraphsContent = [
 
 function About() {
   return (
-    <div>
+    <section>
       <div className="my-14 flex animate-up gap-10">
         <main className="flex flex-col gap-2">
           <h3 className="mb-6 font-inter text-6xl font-semibold">Our Story</h3>
@@ -42,7 +42,7 @@ function About() {
           alt="image of mine - Muhammad Gad"
         />
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -18,7 +18,7 @@ const featuresInfo = [
 
 function Features() {
   return (
-    <div className="mx-auto my-32 grid w-fit grid-cols-3 items-center justify-center gap-x-24 text-center max-semi-sm:grid-cols-1 max-semi-sm:gap-y-10">
+    <section className="mx-auto my-32 grid w-fit grid-cols-3 items-center justify-center gap-x-24 text-center max-semi-sm:grid-cols-1 max-semi-sm:gap-y-10">
       {featuresInfo.map(({ iconName, heading, note }) => {
         return (
           <div className key={heading}>
@@ -30,7 +30,7 @@ function Features() {
           </div>
         );
       })}
-    </div>
+    </section>
   );
 }
 

@@ -49,7 +49,7 @@ export default function Products({ propFilter, displayedProduct }) {
   const productsNumber = products()?.length;
 
   return (
-    <div className="border-b-solid mb-16 mt-24 flex flex-col gap-2 border-b-2 border-b-three pb-16">
+    <section className="border-b-solid mb-16 mt-24 flex flex-col gap-2 border-b-2 border-b-three pb-16">
       <h4 className={redHeading}>This Month</h4>
       <h2 className={mainHeading}>
         {`${filter?.charAt(0).toUpperCase() + filter?.slice(1) || "All"} Products`}
@@ -91,6 +91,6 @@ export default function Products({ propFilter, displayedProduct }) {
       ) : (
         ""
       )}
-    </div>
+    </section>
   );
 }

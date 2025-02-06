@@ -34,7 +34,7 @@ export default function Arrival() {
   const { redHeading, mainHeading } = useContext(HeadingContext);
 
   return (
-    <div className="flex flex-col gap-10">
+    <section className="flex flex-col gap-10">
       <h4 className={redHeading}>Featured</h4>
       <h2 className={mainHeading}>New Arrival</h2>
 
@@ -61,6 +61,6 @@ export default function Arrival() {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
