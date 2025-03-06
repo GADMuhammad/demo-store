@@ -17,7 +17,7 @@ An e-commerce demo project built with React.js and styled using Tailwind CSS. Th
 - **🆕Product Page:** Providing the user the ability to display a product with its details on a separate page.
 
 ## Coming Soon:
-- **Sign in:** We are currently working on adding the ability to register in the store via email.
+- **User authentication:** We are currently working on adding the ability to register in the store via email.
 
 
 ## Technologies Used
